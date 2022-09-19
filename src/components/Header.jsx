@@ -54,7 +54,7 @@ const Header = () => {
 					variant='outline'
 					onClick={handleLanguageChange}
 				>
-					{language === 'en' ? t('UA') : t('EN')}
+					{language === 'en' ? t('EN') : t('UA')}
 				</Button>
 			</Flex>
 		</Flex>

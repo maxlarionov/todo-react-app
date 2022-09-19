@@ -2,6 +2,7 @@
   "name": "react-todo-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maxlarionov.github.io/todo-react-app/",
   "dependencies": {
     "@chakra-ui/react": "^2.2.9",
     "@emotion/react": "^11.0.0",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^14.1.0",
     "axios": "^0.27.2",
     "framer-motion": "^6.2.9",
+    "gh-pages": "^4.0.0",
     "i18next": "^21.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "yarn run build"
   },
   "eslintConfig": {
     "extends": "react-app"

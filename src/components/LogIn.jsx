@@ -13,7 +13,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Login = ({ noteBox, setNoteBox, setSingUp }) => {
-	const { setAuthModal, setUserId, users } = useAppContext()
+	const { setAuthModal, setUserId, users, handleLanguageChange, language } = useAppContext()
 
 	const { t } = useTranslation()
 
@@ -51,12 +51,27 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 				{t('login.title')}
 			</DrawerHeader>
 			<DrawerBody>
-				<Box
-					color={noteBox.color}
+				<Flex
 					my='10px'
+					justifyContent='space-between'
+					alignItems='center'
 				>
-					{noteBox.text}
-				</Box>
+					<Box
+						color={noteBox.color}
+					>
+						{noteBox.text}
+					</Box>
+					<Button
+						fontSize='12px'
+						h='30px'
+						colorScheme='cyan'
+						variant='outline'
+						onClick={handleLanguageChange}
+					>
+						{language === 'en' ? t('EN') : t('UA')}
+					</Button>
+				</Flex>
+
 				<Input
 					backgroundColor='white'
 					placeholder={t('login.loginInput')}

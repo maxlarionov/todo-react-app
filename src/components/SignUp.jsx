@@ -13,7 +13,7 @@ import { postUser } from './services'
 import { useTranslation } from 'react-i18next'
 
 const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
-	const { users, setUsers, setIsLoading } = useAppContext()
+	const { users, setUsers, setIsLoading, handleLanguageChange, language } = useAppContext()
 
 	const { t } = useTranslation()
 
@@ -51,12 +51,26 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 			>
 				{t('signup.title')}</DrawerHeader>
 			<DrawerBody>
-				<Box
-					color={noteBox.color}
+				<Flex
 					my='10px'
+					justifyContent='space-between'
+					alignItems='center'
 				>
-					{noteBox.text}
-				</Box>
+					<Box
+						color={noteBox.color}
+					>
+						{noteBox.text}
+					</Box>
+					<Button
+						fontSize='12px'
+						h='30px'
+						colorScheme='cyan'
+						variant='outline'
+						onClick={handleLanguageChange}
+					>
+						{language === 'en' ? t('EN') : t('UA')}
+					</Button>
+				</Flex>
 
 				<Input
 					backgroundColor='white'
