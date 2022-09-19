@@ -1,0 +1,36 @@
+{
+	"langs": {
+		"en": "EN",
+		"ua": "UA"
+	},
+	"login": {
+		"title": "Автентифікація",
+		"defaultNote": "Напишіть логін і пароль",
+		"errorNote": "Неправильний логін або пароль",
+		"loginInput": "Логін",
+		"passInput": "Пароль",
+		"testingButton": "Тест",
+		"signUpButton": "Зареєструватися",
+		"logInButton": "Увійти"
+	},
+	"signup": {
+		"title": "Реєстрація",
+		"defaultNote": "Створіть логін і пароль",
+		"errorNote": "Неправильний логін",
+		"loginInput": "Створіть логін",
+		"passInput": "Створіть пароль",
+		"backButton": "Назад",
+		"signUpButton": "Зареєструватися"
+	},
+	"main": {
+		"accButton": "Акаунт",
+		"addButton": "Додати задачу",
+		"createTitle": "Створіть задачу",
+		"createText": "Напишіть задачу",
+		"createButton": "Створити",
+		"editTitle": "Редагування задачі",
+		"editText": "*Закрийте для скасування редагування",
+		"deleteButton": "Видалити",
+		"editButton": "Редагувати"
+	}
+}

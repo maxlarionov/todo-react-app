@@ -1,0 +1,36 @@
+{
+	"langs": {
+		"en": "EN",
+		"ua": "UA"
+	},
+	"login": {
+		"title": "Authentication",
+		"defaultNote": "Write login and password",
+		"errorNote": "Incorrect login or password",
+		"loginInput": "Login",
+		"passInput": "Password",
+		"testingButton": "Test",
+		"signUpButton": "Sign Up",
+		"logInButton": "Log In"
+	},
+	"signup": {
+		"title": "Sign Up",
+		"defaultNote": "Create login and password",
+		"errorNote": "Incorrect login",
+		"loginInput": "Create login",
+		"passInput": "Create password",
+		"backButton": "Back",
+		"signUpButton": "Sign Up"
+	},
+	"main": {
+		"accButton": "Account",
+		"addButton": "Add Task",
+		"createTitle": "Create task",
+		"createText": "Write task",
+		"createButton": "Create",
+		"editTitle": "Edit task",
+		"editText": "*Close to cancel editing",
+		"deleteButton": "Delete",
+		"editButton": "Edit"
+	}
+}
