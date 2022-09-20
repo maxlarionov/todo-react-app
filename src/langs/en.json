@@ -9,9 +9,9 @@
 		"errorNote": "Incorrect login or password",
 		"loginInput": "Login",
 		"passInput": "Password",
-		"testingButton": "Test",
-		"signUpButton": "Sign Up",
-		"logInButton": "Log In"
+		"testingButton": "TEST",
+		"signUpButton": "SIGN UP",
+		"logInButton": "LOG IN"
 	},
 	"signup": {
 		"title": "Sign Up",
@@ -19,12 +19,12 @@
 		"errorNote": "Incorrect login",
 		"loginInput": "Create login",
 		"passInput": "Create password",
-		"backButton": "Back",
-		"signUpButton": "Sign Up"
+		"backButton": "BACK",
+		"signUpButton": "SIGN UP"
 	},
 	"main": {
-		"accButton": "Account",
-		"addButton": "Add Task",
+		"accButton": "ACCOUNT",
+		"addButton": "ADD TASK",
 		"createTitle": "Create task",
 		"createText": "Write task",
 		"createButton": "Create",

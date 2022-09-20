@@ -2,18 +2,20 @@ import React from 'react'
 import {
 	Box,
 	Button,
+	Center,
 	DrawerBody,
-	DrawerHeader,
 	Flex,
+	Image,
 	Input,
 } from '@chakra-ui/react'
+import logo from '../imgs/logo.svg'
 import { useState } from 'react'
 import { useAppContext } from './app-context'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Login = ({ noteBox, setNoteBox, setSingUp }) => {
-	const { setAuthModal, setUserId, users, handleLanguageChange, language } = useAppContext()
+	const { setAuthModal, setUserId, users } = useAppContext()
 
 	const { t } = useTranslation()
 
@@ -43,38 +45,37 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 		<Box
 			my={['50px', '100px', '30px']}
 		>
-			<DrawerHeader
+			{/* <DrawerHeader
 				color='black'
 				// color={['red', 'white', 'black']}
 				fontSize={'24px'}
 			>
 				{t('login.title')}
-			</DrawerHeader>
+			</DrawerHeader> */}
+			<Center
+				mt={['0px', '15px', '30px']}
+			>
+				<Image src={logo} w={492} />
+			</Center>
 			<DrawerBody>
-				<Flex
-					my='10px'
-					justifyContent='space-between'
-					alignItems='center'
-				>
-					<Box
+				{/* <Box
 						color={noteBox.color}
 					>
 						{noteBox.text}
-					</Box>
-					<Button
-						fontSize='12px'
-						h='30px'
-						colorScheme='cyan'
-						variant='outline'
-						onClick={handleLanguageChange}
-					>
-						{language === 'en' ? t('EN') : t('UA')}
-					</Button>
-				</Flex>
+					</Box> */}
+				<Box
+					fontFamily='Montserrat, sans-serif'
+					fontWeight='700'
+					color="#4553CF"
+					my="24px"
+				>
+					{t('login.title')}
+				</Box>
 
 				<Input
 					backgroundColor='white'
 					placeholder={t('login.loginInput')}
+					focusBorderColor='#4553CF'
 					value={person}
 					onChange={(e) => setPerson(e.target.value)}
 				/>
@@ -83,6 +84,7 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 					backgroundColor='white'
 					type='password'
 					placeholder={t('login.passInput')}
+					focusBorderColor='#4553CF'
 					value={pass}
 					onChange={(e) => setPass(e.target.value)}
 				/>
@@ -90,17 +92,40 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 					justifyContent='space-between'
 				>
 					<Button
+						fontSize='12px'
+						variant='outline'
+						p='10px'
+						color='#4553CF'
+						border={'2px solid'}
+						borderColor=''
+						borderRadius='10px'
+						_hover={{ bg: 'rgba(69, 83, 207, 0.1)' }}
 						onClick={() => setAuthModal(false)}
 					>
 						{t('login.testingButton')}
 					</Button>
 					<Button
+						fontSize='12px'
+						variant='outline'
+						p='10px'
+						color='#4553CF'
+						border={'2px solid'}
+						borderColor=''
+						borderRadius='10px'
+						_hover={{ bg: 'rgba(69, 83, 207, 0.1)' }}
 						onClick={() => setSingUp(true)}
 					>
 						{t('login.signUpButton')}
 					</Button>
 					< Button
-						colorScheme='blue'
+						fontSize='12px'
+						fontWeight='500'
+						bg='#4553CF'
+						color='white'
+						px='35px'
+						borderRadius='10px'
+						fontFamily='Montserrat, sans-serif'
+						_hover={{ borderColor: 'rgba(69, 83, 207)', bgColor: 'rgba(53, 63, 156)' }}
 						onClick={() => checkAuth(person, pass)}
 					>
 						{t('login.logInButton')}

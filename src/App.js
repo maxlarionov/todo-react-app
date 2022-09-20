@@ -10,6 +10,8 @@ import EditModal from './components/EditModal'
 import AuthModal from './components/AuthModal'
 import Wrapper from './components/Wrapper'
 import Loader from './components/Loader'
+import '@fontsource/montserrat/700.css'
+import '@fontsource/montserrat/600.css'
 
 function App() {
   return (

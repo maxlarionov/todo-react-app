@@ -9,9 +9,9 @@
 		"errorNote": "Неправильний логін або пароль",
 		"loginInput": "Логін",
 		"passInput": "Пароль",
-		"testingButton": "Тест",
-		"signUpButton": "Зареєструватися",
-		"logInButton": "Увійти"
+		"testingButton": "ТЕСТ",
+		"signUpButton": "ЗАРЕЄСТРУВАТИСЯ",
+		"logInButton": "УВІЙТИ"
 	},
 	"signup": {
 		"title": "Реєстрація",
@@ -19,12 +19,12 @@
 		"errorNote": "Неправильний логін",
 		"loginInput": "Створіть логін",
 		"passInput": "Створіть пароль",
-		"backButton": "Назад",
-		"signUpButton": "Зареєструватися"
+		"backButton": "НАЗАД",
+		"signUpButton": "ЗАРЕЄСТРУВАТИСЯ"
 	},
 	"main": {
-		"accButton": "Акаунт",
-		"addButton": "Додати задачу",
+		"accButton": "АКАУНТ",
+		"addButton": "ДОДАТИ ЗАДАЧУ",
 		"createTitle": "Створіть задачу",
 		"createText": "Напишіть задачу",
 		"createButton": "Створити",

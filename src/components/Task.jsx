@@ -37,9 +37,15 @@ const Task = ({ task }) => {
 
 	return (
 		<Flex
-			bgColor='yellow.300'
-			p={3}
+			py='20px'
+			px='30px'
 			my={[3, 4, 5]}
+			fontSize='12px'
+			fontFamily='Montserrat, sans-serif'
+			fontWeight='600'
+			color='#4553CF'
+			border='1px solid'
+			borderColor='#4553CF'
 			borderRadius='10px'
 			gap='10px'
 			onClick={openEditModal}
@@ -52,7 +58,7 @@ const Task = ({ task }) => {
 			>
 				<Checkbox
 					colorScheme='green'
-					borderColor='#282828'
+					borderColor='#FFDA00'
 					defaultChecked={task.complete}
 					onChange={() => checkDone(task.id)}
 				/>

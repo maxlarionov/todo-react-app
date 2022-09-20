@@ -22,7 +22,7 @@ const AuthModal = () => {
 			<DrawerOverlay />
 			<DrawerContent
 				alignItems='center'
-				backgroundColor='silver'
+				backgroundColor='#FAFAFA'
 			>
 				{!singUp ? (
 					<Login noteBox={noteBox} setNoteBox={setNoteBox} singUp={singUp} setSingUp={setSingUp} />

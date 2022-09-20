@@ -6,7 +6,7 @@ import {
 const Wrapper = ({ children }) => {
 	return (
 		<Box
-			bgColor='#282828'
+			bgColor='#FAFAFA'
 			minH='100vh'
 		>
 			<Box
