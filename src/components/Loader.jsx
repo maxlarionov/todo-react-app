@@ -1,12 +1,14 @@
 import React from 'react'
 import {
 	Box,
-	Spinner
+	Spinner,
+	useColorModeValue
 } from '@chakra-ui/react'
 import { useAppContext } from './app-context'
 
 const Loader = () => {
 	const { isLoading } = useAppContext()
+	const backgroundColor = useColorModeValue('#FAFAFA', '#1C203B')
 
 	return (
 		isLoading && (
@@ -25,7 +27,7 @@ const Loader = () => {
 						display='flex'
 						alignItems='center'
 						justifyContent='center'
-						bgColor='white'
+						bgColor={backgroundColor}
 						h='60px'
 						w='60px'
 						mt='150px'

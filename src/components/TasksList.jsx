@@ -5,6 +5,7 @@ import {
 import Task from './Task'
 import { useAppContext } from './app-context'
 import { getTasks } from './services'
+import Empty from './Empty'
 
 const TasksList = () => {
 	const { tasks, setTasks, userId, setIsLoading } = useAppContext()
@@ -20,9 +21,14 @@ const TasksList = () => {
 
 	return (
 		<Box>
-			{tasks.map(task =>
-				<Task key={task.id} task={task} />
+			{tasks[0] ? (
+				tasks.map(task =>
+					<Task key={task.id} task={task} />
+				)
+			) : (
+				<Empty />
 			)}
+
 		</Box>
 	)
 }

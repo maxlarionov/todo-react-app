@@ -1,29 +1,31 @@
 import React from 'react'
 import {
 	Drawer,
+	DrawerCloseButton,
 	DrawerContent,
 	DrawerOverlay,
+	useColorModeValue,
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useAppContext } from './app-context'
 import Login from './LogIn'
 import SignUp from './SignUp'
-import { useTranslation } from 'react-i18next'
 
 const AuthModal = () => {
-	const { authModal } = useAppContext()
-	const { t } = useTranslation()
+	const { authModal, setAuthModal } = useAppContext()
+	const backgroundColor = useColorModeValue('#FAFAFA', '#1C203B')
 
-	const [noteBox, setNoteBox] = useState({ text: t('login.defaultNote'), color: 'black' })
+	const [noteBox, setNoteBox] = useState(false)
 	const [singUp, setSingUp] = useState(false)
 
 	return (
-		<Drawer isOpen={authModal} size='full' placement='left'>
+		<Drawer isOpen={authModal} onClose={() => setAuthModal(false)} size='full' placement='left'>
 			<DrawerOverlay />
 			<DrawerContent
 				alignItems='center'
-				backgroundColor='#FAFAFA'
+				backgroundColor={backgroundColor}
 			>
+				<DrawerCloseButton />
 				{!singUp ? (
 					<Login noteBox={noteBox} setNoteBox={setNoteBox} singUp={singUp} setSingUp={setSingUp} />
 				) : (

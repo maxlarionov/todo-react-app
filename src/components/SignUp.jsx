@@ -7,6 +7,8 @@ import {
 	Flex,
 	Image,
 	Input,
+	useColorMode,
+	useColorModeValue,
 } from '@chakra-ui/react'
 import logo from '../imgs/logo.svg'
 import { useState } from 'react'
@@ -16,6 +18,9 @@ import { useTranslation } from 'react-i18next'
 
 const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 	const { users, setUsers, setIsLoading } = useAppContext()
+	const { colorMode } = useColorMode()
+	const textColor = useColorModeValue('black', '#4553CF')
+	const bgInputColor = useColorModeValue('white', '#1C203B')
 
 	const { t } = useTranslation()
 
@@ -26,7 +31,7 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 		if (!!users) {
 			const checkedUser = users.find(user => user.login === person)
 			if (!!checkedUser) {
-				setNoteBox({ text: t('signup.errortNote'), color: 'red' })
+				setNoteBox({ text: t('signup.errorNote'), color: 'red' })
 			} else {
 				setIsLoading(true)
 				const newUser = { todos: [], login: person, password: pass }
@@ -41,7 +46,7 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 	}
 
 	useEffect(() => {
-		setNoteBox({ text: t('login.defaultNote'), color: 'black' })
+		setNoteBox(false)
 	}, [setNoteBox, t])
 
 	return (
@@ -58,19 +63,25 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 				<Box
 					fontFamily='Montserrat, sans-serif'
 					fontWeight='700'
-					color="#4553CF"
-					my="24px"
+					fontSize='18px'
+					color={textColor}
+					my="15px"
 				>
 					{t('signup.title')}
 				</Box>
-				{/* <Box
-					color={noteBox.color}
-				>
-					{noteBox.text}
-				</Box> */}
+				{noteBox ? (
+					<Box
+						color={noteBox.color}
+						my='10px'
+					>
+						{noteBox.text}
+					</Box>
+				) : (
+					<Box display={'none'}></Box>
+				)}
 
 				<Input
-					backgroundColor='white'
+					backgroundColor={bgInputColor}
 					placeholder={t('signup.loginInput')}
 					focusBorderColor='#4553CF'
 					value={person}
@@ -78,7 +89,7 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 				/>
 				<Input
 					my={4}
-					backgroundColor='white'
+					backgroundColor={bgInputColor}
 					type='password'
 					placeholder={t('signup.passInput')}
 					focusBorderColor='#4553CF'
@@ -87,21 +98,9 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 				/>
 
 				<Flex
-					justifyContent='space-between'
+					flexDirection='column'
+					alignItems='center'
 				>
-					<Button
-						fontSize='12px'
-						variant='outline'
-						p='10px'
-						color='#4553CF'
-						border={'2px solid'}
-						borderColor=''
-						borderRadius='10px'
-						_hover={{ bg: 'rgba(69, 83, 207, 0.1)' }}
-						onClick={() => setSingUp(false)}
-					>
-						{t('signup.backButton')}
-					</Button>
 					<Button
 						fontSize='12px'
 						fontWeight='500'
@@ -110,9 +109,33 @@ const SignUp = ({ noteBox, setNoteBox, setSingUp }) => {
 						px='35px'
 						borderRadius='10px'
 						fontFamily='Montserrat, sans-serif'
+						_hover={{ borderColor: 'rgba(69, 83, 207)', bgColor: 'rgba(53, 63, 156)' }}
 						onClick={() => signUp(person, pass)}
 					>
 						{t('signup.signUpButton')}
+					</Button>
+
+					<Box
+						fontFamily='Montserrat, sans-serif'
+						fontWeight='500'
+						fontSize='12px'
+						mt='15px'
+						color={textColor}
+					>
+						або
+					</Box>
+
+					<Button
+						fontFamily='Montserrat, sans-serif'
+						fontWeight='500'
+						fontSize='12px'
+						variant='outline'
+						color={colorMode === 'light' ? '#4553CF' : 'white'}
+						border='none'
+						_hover={{ textDecoration: 'underline' }}
+						onClick={() => setSingUp(false)}
+					>
+						{t('signup.backButton')}
 					</Button>
 				</Flex>
 			</DrawerBody>

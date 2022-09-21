@@ -9,8 +9,7 @@
 		"errorNote": "Incorrect login or password",
 		"loginInput": "Login",
 		"passInput": "Password",
-		"testingButton": "TEST",
-		"signUpButton": "SIGN UP",
+		"signUpButton": "Sign up",
 		"logInButton": "LOG IN"
 	},
 	"signup": {
@@ -19,11 +18,11 @@
 		"errorNote": "Incorrect login",
 		"loginInput": "Create login",
 		"passInput": "Create password",
-		"backButton": "BACK",
+		"backButton": "Back",
 		"signUpButton": "SIGN UP"
 	},
 	"main": {
-		"accButton": "ACCOUNT",
+		"logOutButton": "LOG OUT",
 		"addButton": "ADD TASK",
 		"createTitle": "Create task",
 		"createText": "Write task",
@@ -31,6 +30,8 @@
 		"editTitle": "Edit task",
 		"editText": "*Close to cancel editing",
 		"deleteButton": "Delete",
-		"editButton": "Edit"
+		"editButton": "Edit",
+		"emptyTitle": "Your tasks will appear here",
+		"emptyText": "Let's add!"
 	}
 }
