@@ -10,16 +10,19 @@
 		"loginInput": "Login",
 		"passInput": "Password",
 		"signUpButton": "Sign up",
-		"logInButton": "LOG IN"
+		"logInButton": "LOG IN",
+		"orButton": "or"
 	},
 	"signup": {
 		"title": "Sign Up",
 		"defaultNote": "Create login and password",
-		"errorNote": "Incorrect login",
+		"incorrectNote": "Incorrect login",
+		"errorNote": "login and password must be more than 3 symbols",
 		"loginInput": "Create login",
 		"passInput": "Create password",
 		"backButton": "Back",
-		"signUpButton": "SIGN UP"
+		"signUpButton": "SIGN UP",
+		"orButton": "or"
 	},
 	"main": {
 		"logOutButton": "LOG OUT",

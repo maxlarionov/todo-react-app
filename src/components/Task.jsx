@@ -5,15 +5,11 @@ import {
 	Text,
 	Box
 } from '@chakra-ui/react'
-// import checkedBox from '../imgs/checked.svg'
 import { useAppContext } from './app-context'
 import { editDataTask } from './services'
 
-
-
 const Task = ({ task }) => {
-
-	const { tasks, setEditModal, setTasks, setEditTask, userId, setIsLoading } = useAppContext()
+	const { tasks, setEditModal, setTasks, setEditTask, userId, setIsLoading, mainColor } = useAppContext()
 
 	const openEditModal = () => {
 		setEditModal(true)
@@ -44,7 +40,7 @@ const Task = ({ task }) => {
 			fontSize='12px'
 			fontFamily='Montserrat, sans-serif'
 			fontWeight='600'
-			color='#4553CF'
+			color={mainColor}
 			border='1px solid'
 			borderColor='#4553CF'
 			borderRadius='10px'
@@ -52,7 +48,6 @@ const Task = ({ task }) => {
 			cursor='pointer'
 			_hover={{ bg: 'rgba(69, 83, 207, 0.1)' }}
 			onClick={openEditModal}
-
 		>
 			<Box
 				display='flex'
@@ -61,7 +56,6 @@ const Task = ({ task }) => {
 			>
 				<Checkbox
 					colorScheme='green'
-					// icon={checkedBox}
 					borderColor='#FFDA00'
 					defaultChecked={task.complete}
 					onChange={() => checkDone(task.id)}

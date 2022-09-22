@@ -8,16 +8,22 @@ import { getTasks } from './services'
 import Empty from './Empty'
 
 const TasksList = () => {
-	const { tasks, setTasks, userId, setIsLoading } = useAppContext()
+	const { tasks, setTasks, userId, setIsLoading, setModal } = useAppContext()
 
 	useEffect(() => {
 		setIsLoading(true)
-		getTasks(userId)
-			.then(data => {
-				setIsLoading(false)
-				return setTasks(data.todos)
-			})
-	}, [setTasks, userId, setIsLoading])
+		if (!!localStorage.getItem('id')) {
+			const id = localStorage.getItem('id')
+			getTasks(id)
+				.then(data => {
+					setIsLoading(false)
+					return setTasks(data.todos)
+				})
+		} else {
+			setModal('logIn')
+			setIsLoading(false)
+		}
+	}, [setTasks, userId, setIsLoading, setModal])
 
 	return (
 		<Box>
@@ -28,7 +34,6 @@ const TasksList = () => {
 			) : (
 				<Empty />
 			)}
-
 		</Box>
 	)
 }

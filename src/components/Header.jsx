@@ -1,7 +1,6 @@
 import React from 'react'
 import {
 	Center,
-	Button,
 	Flex,
 	Image,
 	Box,
@@ -13,18 +12,21 @@ import themeWhite from '../imgs/theme-w.svg'
 import themeDark from '../imgs/theme-d.svg'
 import { useAppContext } from './app-context'
 import { useTranslation } from 'react-i18next'
+import OutlineButton from './ui/OutlineButton'
+import SolidButton from './ui/SolidButton'
 
 const Header = () => {
 	const { t } = useTranslation()
-	const { setAddModal, setAuthModal, handleLanguageChange, language } = useAppContext()
+	const { setAddModal, setModal, handleLanguageChange, language, mainColor } = useAppContext()
 	const { colorMode, toggleColorMode } = useColorMode()
-	const hoverButtonColor = useColorModeValue({ bg: 'rgba(69, 83, 207, 0.1)' }, { bg: 'rgba(69, 83, 207, 0.3)' })
-	const backgroundThemeColor = useColorModeValue('none', '#4553CF')
-
-
-
+	const backgroundThemeColor = useColorModeValue('none', mainColor)
 	const openAddModal = () => {
 		setAddModal(true)
+	}
+	const logOut = () => {
+		setModal('logIn')
+		localStorage.removeItem('login')
+		localStorage.removeItem('id')
 	}
 
 	return (
@@ -44,70 +46,42 @@ const Header = () => {
 			>
 				<Image src={logo} w={492} />
 			</Center>
-
 			<Flex
 				justifyContent='space-between'
 			>
-				<Button
-					fontSize='12px'
-					variant='outline'
-					p='10px'
-					color='#4553CF'
-					border='2px solid'
-					borderColor=''
-					borderRadius='10px'
-					_hover={hoverButtonColor}
-					onClick={() => setAuthModal(true)}
+				<OutlineButton
+					onClick={logOut}
 				>
 					{t('main.logOutButton')}
-				</Button>
-				<Button
-					fontSize='12px'
-					fontWeight='500'
-					bg='#4553CF'
-					color='white'
-					px='35px'
-					borderRadius='10px'
-					_hover={{ bgColor: 'rgba(53, 63, 156)' }}
+				</OutlineButton>
+				<OutlineButton
+					onClick={() => setModal('profile')}
+				>
+					PROFILE
+				</OutlineButton>
+				<SolidButton
+					px={['15px', '25px', '35px']}
 					onClick={() => openAddModal()}
 				>
 					{t('main.addButton')}
-				</Button>
+				</SolidButton>
 				<Box
 				>
-					<Button
-						fontSize='12px'
-						variant='outline'
-						p='10px'
-						color='#4553CF'
-						border='2px solid'
-						borderColor=''
-						borderRadius='10px'
+					<OutlineButton
 						bg={backgroundThemeColor}
-						_hover={hoverButtonColor}
 						mr='10px'
 						onClick={toggleColorMode}
 					>
 						<Image src={colorMode === 'light' ? themeWhite : themeDark} />
-					</Button>
-					<Button
-						fontSize='12px'
-						variant='outline'
-						p='10px'
-						color='#4553CF'
-						border='2px solid'
-						borderColor=''
-						borderRadius='10px'
-						_hover={hoverButtonColor}
+					</OutlineButton>
+					<OutlineButton
 						onClick={handleLanguageChange}
 					>
-						{language === 'en' ? t('EN') : t('UA')}
-					</Button>
+						{language === 'en' ? t('UA') : t('EN')}
+					</OutlineButton>
 				</Box>
-
 			</Flex>
 		</Flex>
-
 	)
 }
 

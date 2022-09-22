@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 
 const AddModal = () => {
 	const { tasks, setTasks, addModal, setAddModal, textTask, setTextTask, userId, setIsLoading } = useAppContext()
-
 	const { t } = useTranslation()
 
 	const addTask = (e) => {
@@ -48,7 +47,6 @@ const AddModal = () => {
 						placeholder={t('main.createText')}
 					/>
 				</ModalBody>
-
 				<ModalFooter>
 					<Button
 						colorScheme='green'

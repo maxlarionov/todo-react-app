@@ -7,7 +7,7 @@ import TasksList from './components/TasksList'
 import { AppProvider } from './components/app-context'
 import AddModal from './components/AddModal'
 import EditModal from './components/EditModal'
-import AuthModal from './components/AuthModal'
+import Modal from './components/Modal'
 import Wrapper from './components/Wrapper'
 import Loader from './components/Loader'
 import '@fontsource/montserrat/700.css'
@@ -22,7 +22,7 @@ function App() {
           <TasksList />
           <AddModal />
           <EditModal />
-          <AuthModal />
+          <Modal />
           <Loader />
         </Wrapper>
       </ChakraProvider>

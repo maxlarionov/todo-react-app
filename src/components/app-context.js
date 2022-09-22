@@ -11,11 +11,9 @@ export const useAppState = () => {
    const [textTask, setTextTask] = useState('')
    const [editModal, setEditModal] = useState(false)
    const [editTask, setEditTask] = useState('')
-   const [authModal, setAuthModal] = useState(true)
-   const [userId, setUserId] = useState(1)
+   const [Modal, setModal] = useState('close')
    const [users, setUsers] = useState([])
    const [isLoading, setIsLoading] = useState(false)
-
    const [language, setLanguage] = useLocalStorage('language', 'en')
 
    const handleLanguageChange = () => {
@@ -33,6 +31,8 @@ export const useAppState = () => {
          .then(data => setUsers(data))
    }, [])
 
+   const mainColor = '#4553CF'
+
    return {
       tasks,
       setTasks,
@@ -44,17 +44,16 @@ export const useAppState = () => {
       setEditModal,
       editTask,
       setEditTask,
-      authModal,
-      setAuthModal,
-      userId,
-      setUserId,
+      Modal,
+      setModal,
       users,
       setUsers,
       isLoading,
       setIsLoading,
       language,
       setLanguage,
-      handleLanguageChange
+      handleLanguageChange,
+      mainColor
    }
 }
 
@@ -70,17 +69,16 @@ export const AppProvider = ({ children }) => {
       setEditModal,
       editTask,
       setEditTask,
-      authModal,
-      setAuthModal,
-      userId,
-      setUserId,
+      Modal,
+      setModal,
       users,
       setUsers,
       isLoading,
       setIsLoading,
       language,
       setLanguage,
-      handleLanguageChange
+      handleLanguageChange,
+      mainColor
    } = useAppState()
 
    return (
@@ -96,17 +94,16 @@ export const AppProvider = ({ children }) => {
             setEditModal,
             editTask,
             setEditTask,
-            authModal,
-            setAuthModal,
-            userId,
-            setUserId,
+            Modal,
+            setModal,
             users,
             setUsers,
             isLoading,
             setIsLoading,
             language,
             setLanguage,
-            handleLanguageChange
+            handleLanguageChange,
+            mainColor
          }}
       >
          {children}

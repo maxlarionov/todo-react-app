@@ -1,13 +1,11 @@
 import React from 'react'
 import {
 	Box,
-	Button,
 	Center,
 	DrawerBody,
 	Flex,
 	Image,
 	Input,
-	useColorMode,
 	useColorModeValue,
 } from '@chakra-ui/react'
 import logo from '../imgs/logo.svg'
@@ -15,16 +13,14 @@ import { useState } from 'react'
 import { useAppContext } from './app-context'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import SolidButton from './ui/SolidButton'
+import LinkButton from './ui/LinkButton'
 
-const Login = ({ noteBox, setNoteBox, setSingUp }) => {
-	const { setAuthModal, setUserId, users } = useAppContext()
-	const { colorMode } = useColorMode()
-	const textColor = useColorModeValue('black', '#4553CF')
+const Login = ({ noteBox, setNoteBox }) => {
+	const { users, mainColor, setModal } = useAppContext()
+	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
-
 	const { t } = useTranslation()
-
-
 	const [person, setPerson] = useState(``)
 	const [pass, setPass] = useState('')
 
@@ -32,11 +28,13 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 		if (!!users) {
 			users.forEach(user => {
 				if (person === user.login && pass === user.password) {
-					setUserId(user.id)
+					localStorage.setItem('login', user.login)
+					localStorage.setItem('id', user.id)
+					localStorage.setItem('name', user.name)
 					setPerson('')
 					setPass('')
 					setNoteBox(false)
-					setAuthModal(false)
+					setModal('close')
 				} else setNoteBox({ text: t('login.errorNote'), color: 'red' })
 			})
 		}
@@ -75,20 +73,19 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 				) : (
 					<Box display={'none'}></Box>
 				)}
-
 				<Input
 					backgroundColor={bgInputColor}
+					focusBorderColor={mainColor}
 					placeholder={t('login.loginInput')}
-					focusBorderColor='#4553CF'
 					value={person}
 					onChange={(e) => setPerson(e.target.value)}
 				/>
 				<Input
-					my={4}
 					backgroundColor={bgInputColor}
+					focusBorderColor={mainColor}
+					my={4}
 					type='password'
 					placeholder={t('login.passInput')}
-					focusBorderColor='#4553CF'
 					value={pass}
 					onChange={(e) => setPass(e.target.value)}
 				/>
@@ -96,20 +93,11 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 					flexDirection='column'
 					alignItems='center'
 				>
-					< Button
-						fontSize='12px'
-						fontWeight='500'
-						bg='#4553CF'
-						color='white'
-						px='35px'
-						w='150px'
-						borderRadius='10px'
-						fontFamily='Montserrat, sans-serif'
-						_hover={{ borderColor: 'rgba(69, 83, 207)', bgColor: 'rgba(53, 63, 156)' }}
+					<SolidButton
 						onClick={() => checkAuth(person, pass)}
 					>
 						{t('login.logInButton')}
-					</Button>
+					</SolidButton>
 					<Box
 						fontFamily='Montserrat, sans-serif'
 						fontWeight='500'
@@ -117,20 +105,13 @@ const Login = ({ noteBox, setNoteBox, setSingUp }) => {
 						mt='15px'
 						color={textColor}
 					>
-						або
+						{t('login.orButton')}
 					</Box>
-					<Button
-						fontFamily='Montserrat, sans-serif'
-						fontWeight='500'
-						fontSize='12px'
-						variant='outline'
-						color={colorMode === 'light' ? '#4553CF' : 'white'}
-						border='none'
-						_hover={{ textDecoration: 'underline' }}
-						onClick={() => setSingUp(true)}
+					<LinkButton
+						onClick={() => setModal('signUp')}
 					>
 						{t('login.signUpButton')}
-					</Button>
+					</LinkButton>
 				</Flex>
 			</DrawerBody>
 		</Box >

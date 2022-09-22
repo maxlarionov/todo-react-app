@@ -10,16 +10,19 @@
 		"loginInput": "Логін",
 		"passInput": "Пароль",
 		"signUpButton": "Створити акаунт",
-		"logInButton": "УВІЙТИ"
+		"logInButton": "УВІЙТИ",
+		"orButton": "або"
 	},
 	"signup": {
 		"title": "Реєстрація",
 		"defaultNote": "Створіть логін і пароль",
-		"errorNote": "Неправильний логін",
+		"incorrectNote": "Неправильний логін",
+		"errorNote": "Логін і пароль повинні бути більше 3 символів",
 		"loginInput": "Створіть логін",
 		"passInput": "Створіть пароль",
 		"backButton": "Назад",
-		"signUpButton": "ЗАРЕЄСТРУВАТИСЯ"
+		"signUpButton": "ЗАРЕЄСТРУВАТИСЯ",
+		"orButton": "або"
 	},
 	"main": {
 		"logOutButton": "ВИЙТИ",

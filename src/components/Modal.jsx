@@ -1,7 +1,6 @@
 import React from 'react'
 import {
 	Drawer,
-	DrawerCloseButton,
 	DrawerContent,
 	DrawerOverlay,
 	useColorModeValue,
@@ -10,26 +9,28 @@ import { useState } from 'react'
 import { useAppContext } from './app-context'
 import Login from './LogIn'
 import SignUp from './SignUp'
+import Profile from './Profile'
 
 const AuthModal = () => {
-	const { authModal, setAuthModal } = useAppContext()
+	const { Modal } = useAppContext()
 	const backgroundColor = useColorModeValue('#FAFAFA', '#1C203B')
-
 	const [noteBox, setNoteBox] = useState(false)
-	const [singUp, setSingUp] = useState(false)
 
 	return (
-		<Drawer isOpen={authModal} onClose={() => setAuthModal(false)} size='full' placement='left'>
+		<Drawer isOpen={Modal !== 'close' ? true : false} size='full' placement='left'>
 			<DrawerOverlay />
 			<DrawerContent
 				alignItems='center'
 				backgroundColor={backgroundColor}
 			>
-				<DrawerCloseButton />
-				{!singUp ? (
-					<Login noteBox={noteBox} setNoteBox={setNoteBox} singUp={singUp} setSingUp={setSingUp} />
+				{Modal === 'logIn' ? (
+					<Login noteBox={noteBox} setNoteBox={setNoteBox} />
 				) : (
-					<SignUp noteBox={noteBox} setNoteBox={setNoteBox} singUp={singUp} setSingUp={setSingUp} />
+					Modal === 'signUp' ? (
+						<SignUp noteBox={noteBox} setNoteBox={setNoteBox} />
+					) : (
+						<Profile />
+					)
 				)}
 			</DrawerContent>
 		</Drawer >

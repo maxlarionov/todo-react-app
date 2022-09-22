@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 
 const EditModal = () => {
 	const { tasks, setTasks, editModal, setEditModal, setTextTask, editTask, setEditTask, userId, setIsLoading } = useAppContext()
-
 	const { t } = useTranslation()
 
 	const edit = () => {
@@ -28,7 +27,6 @@ const EditModal = () => {
 				return task
 			}
 		})
-
 		editDataTask(userId, { todos: editedTasks })
 			.then(() => {
 				setIsLoading(false)
