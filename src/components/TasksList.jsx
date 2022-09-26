@@ -13,8 +13,7 @@ const TasksList = () => {
 	useEffect(() => {
 		setIsLoading(true)
 		if (!!localStorage.getItem('id')) {
-			const id = localStorage.getItem('id')
-			getTasks(id)
+			getTasks(userId)
 				.then(data => {
 					setIsLoading(false)
 					return setTasks(data.todos)

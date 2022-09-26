@@ -23,11 +23,6 @@ const Header = () => {
 	const openAddModal = () => {
 		setAddModal(true)
 	}
-	const logOut = () => {
-		setModal('logIn')
-		localStorage.removeItem('login')
-		localStorage.removeItem('id')
-	}
 
 	return (
 		<Flex
@@ -50,14 +45,9 @@ const Header = () => {
 				justifyContent='space-between'
 			>
 				<OutlineButton
-					onClick={logOut}
-				>
-					{t('main.logOutButton')}
-				</OutlineButton>
-				<OutlineButton
 					onClick={() => setModal('profile')}
 				>
-					PROFILE
+					{t('main.profileButton')}
 				</OutlineButton>
 				<SolidButton
 					px={['15px', '25px', '35px']}

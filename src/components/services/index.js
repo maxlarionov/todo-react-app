@@ -20,3 +20,8 @@ export const editDataTask = async (userId, data) => {
 	const response = await axios.put(API_URL + userId, data)
 	return response.data
 }
+
+export const deleteUser = async (userId) => {
+	const response = await axios.delete(API_URL + userId)
+	return response.data
+}

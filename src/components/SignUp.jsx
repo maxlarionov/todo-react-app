@@ -21,17 +21,18 @@ const SignUp = ({ noteBox, setNoteBox }) => {
 	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
-	const [person, setPerson] = useState('')
+	const [name, setName] = useState('')
+	const [login, setLogin] = useState('')
 	const [pass, setPass] = useState('')
 
-	const signUp = (person, pass) => {
+	const signUp = (name, login, pass) => {
 		if (!!users) {
-			const checkedUser = users.find(user => user.login === person)
+			const checkedUser = users.find(user => user.login === login)
 			if (!!checkedUser) {
 				setNoteBox({ text: t('signup.incorrectNote'), color: 'red' })
-			} else if (person.length >= 3 && pass.length >= 3) {
+			} else if (login.length >= 3 && pass.length >= 3) {
 				setIsLoading(true)
-				const newUser = { todos: [], login: person, password: pass }
+				const newUser = { name: name, login: login, password: pass, todos: [] }
 				postUser(newUser)
 					.then(data => {
 						setIsLoading(false)
@@ -77,28 +78,38 @@ const SignUp = ({ noteBox, setNoteBox }) => {
 				) : (
 					<Box display={'none'}></Box>
 				)}
+				<Box>
+					<Input
+						backgroundColor={bgInputColor}
+						focusBorderColor={mainColor}
+						placeholder={t('signup.nameInput')}
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+				</Box>
 				<Input
 					backgroundColor={bgInputColor}
 					focusBorderColor={mainColor}
 					placeholder={t('signup.loginInput')}
-					value={person}
-					onChange={(e) => setPerson(e.target.value)}
+					my={4}
+					value={login}
+					onChange={(e) => setLogin(e.target.value)}
 				/>
 				<Input
 					focusBorderColor={mainColor}
 					backgroundColor={bgInputColor}
-					my={4}
 					type='password'
 					placeholder={t('signup.passInput')}
 					value={pass}
 					onChange={(e) => setPass(e.target.value)}
 				/>
 				<Flex
+					mt='16px'
 					flexDirection='column'
 					alignItems='center'
 				>
 					<SolidButton
-						onClick={() => signUp(person, pass)}
+						onClick={() => signUp(name, login, pass)}
 					>
 						{t('signup.signUpButton')}
 					</SolidButton>

@@ -9,6 +9,7 @@ const OutlineButton = ({ children, ...props }) => {
 
 	return (
 		<Button
+			fontFamily='Montserrat, sans-serif'
 			fontSize='12px'
 			variant='outline'
 			p='10px'

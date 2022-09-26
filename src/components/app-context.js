@@ -13,6 +13,7 @@ export const useAppState = () => {
    const [editTask, setEditTask] = useState('')
    const [Modal, setModal] = useState('close')
    const [users, setUsers] = useState([])
+   const [userId, setUserId] = useState(localStorage.getItem('id'))
    const [isLoading, setIsLoading] = useState(false)
    const [language, setLanguage] = useLocalStorage('language', 'en')
 
@@ -48,6 +49,8 @@ export const useAppState = () => {
       setModal,
       users,
       setUsers,
+      userId,
+      setUserId,
       isLoading,
       setIsLoading,
       language,
@@ -73,6 +76,8 @@ export const AppProvider = ({ children }) => {
       setModal,
       users,
       setUsers,
+      userId,
+      setUserId,
       isLoading,
       setIsLoading,
       language,
@@ -98,6 +103,8 @@ export const AppProvider = ({ children }) => {
             setModal,
             users,
             setUsers,
+            userId,
+            setUserId,
             isLoading,
             setIsLoading,
             language,

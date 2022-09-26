@@ -1,14 +1,12 @@
 import React from 'react'
 import {
 	Box,
-	Center,
 	DrawerBody,
 	Editable,
 	EditableInput,
 	EditablePreview,
 	Flex,
 	Image,
-	Input,
 	useColorModeValue,
 } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -16,11 +14,11 @@ import { useAppContext } from './app-context'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
-import LinkButton from './ui/LinkButton'
 import OutlineButton from './ui/OutlineButton'
+import { deleteUser } from './services'
 
 const Profile = () => {
-	const { tasks, users, mainColor, setModal } = useAppContext()
+	const { tasks, users, setUsers, userId, mainColor, setModal, setIsLoading } = useAppContext()
 	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
@@ -29,10 +27,30 @@ const Profile = () => {
 
 	const name = localStorage.getItem('name')
 
-	const logOut = () => {
-		setModal('logIn')
+	const cleanUpLocalStorage = () => {
 		localStorage.removeItem('login')
 		localStorage.removeItem('id')
+		localStorage.removeItem('name')
+	}
+
+	const logOut = () => {
+		setModal('logIn')
+		cleanUpLocalStorage()
+	}
+
+	const deleteProfile = () => {
+		setIsLoading(true)
+		deleteUser(userId)
+			.then(() => {
+				setModal('logIn')
+				cleanUpLocalStorage()
+				setIsLoading(false)
+				return setUsers(prevState => prevState.filter(user => user.id !== userId))
+			})
+	}
+
+	const backToMain = () => {
+		setModal('close')
 	}
 
 	return (
@@ -53,19 +71,21 @@ const Profile = () => {
 				</Box>
 
 				<Box>
-					Your name
+					Photo
 					<Box
 						w='100px'
 						h='100px'
 					>
 						<Image
 							h='100px'
-							src='https://memepedia.ru/wp-content/uploads/2019/01/hamster-768x432.jpg' />
+							src='https://images7.memedroid.com/images/UPLOADED484/611bd18aecbfd.jpeg' />
 					</Box>
 				</Box>
 
-				<Box>
-					Your name
+				<Box
+					my='20px'
+				>
+					Name
 					<Editable defaultValue={name}>
 						<EditablePreview />
 						<EditableInput />
@@ -73,19 +93,24 @@ const Profile = () => {
 				</Box>
 
 				<Flex
-					flexDirection='column'
+					justifyContent='space-around'
 					alignItems='center'
 				>
 					<OutlineButton
-						onClick={() => console.log(tasks)}
+						onClick={() => deleteProfile()}
 					>
-						Delete
+						DELETE
 					</OutlineButton>
 					<SolidButton
 						onClick={logOut}
 					>
-						Log out
+						{t('main.logOutButton')}
 					</SolidButton>
+					<OutlineButton
+						onClick={() => backToMain()}
+					>
+						BACK
+					</OutlineButton>
 				</Flex>
 			</DrawerBody>
 		</Box >
