@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-react-app/static/css/main.753f5d99.css",
-    "main.js": "/todo-react-app/static/js/main.c0123f05.js",
+    "main.js": "/todo-react-app/static/js/main.cccc6919.js",
     "static/media/montserrat-all-700-normal.woff": "/todo-react-app/static/media/montserrat-all-700-normal.168d5b114e5a6d216802.woff",
     "static/media/montserrat-all-600-normal.woff": "/todo-react-app/static/media/montserrat-all-600-normal.3e143051a8039d6b6e99.woff",
     "static/media/empty-d.png": "/todo-react-app/static/media/empty-d.0810ce489f3b751e042b.png",
@@ -17,14 +17,17 @@
     "static/media/montserrat-cyrillic-600-normal.woff2": "/todo-react-app/static/media/montserrat-cyrillic-600-normal.4375539f9fe1079b0147.woff2",
     "static/media/montserrat-vietnamese-700-normal.woff2": "/todo-react-app/static/media/montserrat-vietnamese-700-normal.810d24ff481f2abee5c1.woff2",
     "static/media/montserrat-vietnamese-600-normal.woff2": "/todo-react-app/static/media/montserrat-vietnamese-600-normal.702a2b926210a7b44461.woff2",
+    "static/media/delete-icon-hover.svg": "/todo-react-app/static/media/delete-icon-hover.b6f20cf0b679b8bb3a385c54c82f1073.svg",
+    "static/media/delete-icon.svg": "/todo-react-app/static/media/delete-icon.eda4a6e09e1cc12c14d0871e91097f15.svg",
+    "static/media/delete-icon-full.svg": "/todo-react-app/static/media/delete-icon-full.53df51fc90479e769449dd2aeb090471.svg",
     "static/media/theme-d.svg": "/todo-react-app/static/media/theme-d.21ee6fbec88e11bba67c9617f8af9c19.svg",
     "static/media/theme-w.svg": "/todo-react-app/static/media/theme-w.8c96a3693ab6e57764f14208745c63ef.svg",
     "index.html": "/todo-react-app/index.html",
     "main.753f5d99.css.map": "/todo-react-app/static/css/main.753f5d99.css.map",
-    "main.c0123f05.js.map": "/todo-react-app/static/js/main.c0123f05.js.map"
+    "main.cccc6919.js.map": "/todo-react-app/static/js/main.cccc6919.js.map"
   },
   "entrypoints": [
     "static/css/main.753f5d99.css",
-    "static/js/main.c0123f05.js"
+    "static/js/main.cccc6919.js"
   ]
 }
