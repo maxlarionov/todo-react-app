@@ -27,17 +27,28 @@
 	},
 	"main": {
 		"profileButton": "PROFILE",
-		"logOutButton": "LOG OUT",
 		"addButton": "ADD TASK",
 		"createTitle": "NEW TASK",
-		"createSubTitle": "tasks of? ",
+		"createSubTitle": "'s task",
 		"createText": "Write text",
 		"createButton": "Create",
 		"editTitle": "Edit text",
 		"editText": "Write text",
-		"deleteButton": "Delete",
 		"editButton": "Edit",
 		"emptyTitle": "Your tasks will appear here",
 		"emptyText": "Let's add!"
+	},
+	"profile": {
+		"title": "Profile",
+		"subText": "Lightning tasks:",
+		"error": "Empty input",
+		"photoTitle": "Edit photo",
+		"photoPlaceholder": "Paste link to the new photo",
+		"nameTitle": "Edit name",
+		"namePlaceholder": "Write new name",
+		"changeButton": "Change",
+		"deleteUserButton": "DELETE",
+		"logOutUserButton": "LOG OUT",
+		"backToMainButton": "BACK"
 	}
 }

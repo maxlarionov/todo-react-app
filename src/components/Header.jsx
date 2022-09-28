@@ -17,7 +17,7 @@ import SolidButton from './ui/SolidButton'
 
 const Header = () => {
 	const { t } = useTranslation()
-	const { setAddModal, setModal, handleLanguageChange, language, mainColor } = useAppContext()
+	const { user, setAddModal, setModal, handleLanguageChange, language, mainColor } = useAppContext()
 	const { colorMode, toggleColorMode } = useColorMode()
 	const backgroundThemeColor = useColorModeValue('none', mainColor)
 	const openAddModal = () => {
@@ -31,8 +31,8 @@ const Header = () => {
 			flexDir='column'
 			justifyContent='center'
 			alignContent='center'
-			py={['0px', '0px', '5px']}
-			gap={['0px', '10px', '20px']}
+			py={['10px', '15px', '20px']}
+			gap={['10px', '10px', '20px']}
 			w='100%'
 		>
 			<Center
@@ -43,12 +43,32 @@ const Header = () => {
 			</Center>
 			<Flex
 				justifyContent='space-between'
+				flexDirection={['column', 'row']}
+				gap={['10px', '0px']}
 			>
-				<OutlineButton
+				<Flex
+					alignItems='center'
+					gap='1'
+					maxW='120px'
+					cursor='pointer'
+					_hover={{ opacity: 0.7 }}
 					onClick={() => setModal('profile')}
 				>
-					{t('main.profileButton')}
-				</OutlineButton>
+					<OutlineButton
+						bgImage={user.photo}
+						bgSize='cover'
+						bgPosition='center'
+						_hover={{ bgImage: [user.photo] }}
+						_active={{ bgImage: [user.photo] }}
+						onClick={(e) => e.preventDefault}
+					/>
+					<Box
+						color={mainColor}
+					>
+						{user.name}
+					</Box>
+				</Flex>
+
 				<SolidButton
 					px={['15px', '25px', '35px']}
 					onClick={() => openAddModal()}
@@ -56,6 +76,8 @@ const Header = () => {
 					{t('main.addButton')}
 				</SolidButton>
 				<Box
+					position={['absolute', 'static']}
+					right='20px'
 				>
 					<OutlineButton
 						bg={backgroundThemeColor}
@@ -71,7 +93,7 @@ const Header = () => {
 					</OutlineButton>
 				</Box>
 			</Flex>
-		</Flex>
+		</Flex >
 	)
 }
 

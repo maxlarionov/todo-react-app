@@ -22,11 +22,11 @@ import hoverDelButton from '../imgs/delete-icon-hover.svg'
 import fullDelButton from '../imgs/delete-icon-full.svg'
 
 const EditModal = () => {
-	const { tasks, setTasks, editModal, setEditModal, setTextTask, editTask, setEditTask, userId, setIsLoading, mainColor, setModal } = useAppContext()
+	const { tasks, setTasks, editModal, setEditModal, setTextTask, editTask, setEditTask, user, userId, setIsLoading, mainColor, setModal, language } = useAppContext()
 	const { t } = useTranslation()
 	const { colorMode } = useColorMode()
 	const bgInputColor = useColorModeValue('white', '#1C203B')
-	const personName = localStorage.getItem('name')
+	const personName = user.name
 
 	const edit = () => {
 		setIsLoading(true)
@@ -92,22 +92,41 @@ const EditModal = () => {
 						fontWeight='700'
 						pb='0px'
 					>{t('main.editTitle')}</Box>
-					<Box
-						fontFamily='Montserrat, sans-serif'
-						fontWeight='500'
-						fontSize='11px'
-					>
-						{t('main.createSubTitle')}
+					{language === 'en' ? (
 						<Box
-							cursor='pointer'
-							display='inline-block'
-							fontWeight='700'
-							_hover={{ textDecoration: 'underline' }}
-							onClick={openProfile}
+							fontFamily='Montserrat, sans-serif'
+							fontWeight='500'
+							fontSize='11px'
 						>
-							{personName}
+							<Box
+								cursor='pointer'
+								display='inline-block'
+								fontWeight='700'
+								_hover={{ textDecoration: 'underline' }}
+								onClick={openProfile}
+							>
+								{personName}
+							</Box>
+							{t('main.createSubTitle')}
 						</Box>
-					</Box>
+					) : (
+						<Box
+							fontFamily='Montserrat, sans-serif'
+							fontWeight='500'
+							fontSize='11px'
+						>
+							{t('main.createSubTitle')}
+							<Box
+								cursor='pointer'
+								display='inline-block'
+								fontWeight='700'
+								_hover={{ textDecoration: 'underline' }}
+								onClick={openProfile}
+							>
+								{personName}
+							</Box>
+						</Box>
+					)}
 				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>

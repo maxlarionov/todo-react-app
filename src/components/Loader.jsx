@@ -1,6 +1,7 @@
 import React from 'react'
 import {
 	Box,
+	Center,
 	Spinner,
 	useColorModeValue
 } from '@chakra-ui/react'
@@ -13,7 +14,7 @@ const Loader = () => {
 	return (
 		isLoading && (
 			<Box>
-				<Box
+				<Center
 					position='fixed'
 					w='100%'
 					h='100%'
@@ -30,13 +31,11 @@ const Loader = () => {
 						bgColor={backgroundColor}
 						h='60px'
 						w='60px'
-						mt='150px'
-						ml='48%'
 						borderRadius='10px'
 					>
 						<Spinner size='lg' />
 					</Box>
-				</Box>
+				</Center>
 			</Box >
 		)
 	)

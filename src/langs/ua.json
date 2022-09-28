@@ -27,7 +27,6 @@
 	},
 	"main": {
 		"profileButton": "ПРОФІЛЬ",
-		"logOutButton": "ВИЙТИ",
 		"addButton": "ДОДАТИ ЗАДАЧУ",
 		"createTitle": "НОВА ЗАДАЧА",
 		"createSubTitle": "задачі ",
@@ -35,9 +34,21 @@
 		"createButton": "Створити",
 		"editTitle": "РУДАГУВАННЯ",
 		"editText": "Введіть текст",
-		"deleteButton": "Видалити",
 		"editButton": "Редагувати",
 		"emptyTitle": "Тут з’являться ваші задачі",
 		"emptyText": "Давай додамо!"
+	},
+	"profile": {
+		"title": "Профіль",
+		"subText": "Блискавичні задачі:",
+		"error": "Пуста строка",
+		"photoTitle": "Редагувати фото",
+		"photoPlaceholder": "Вставте посилання на нове фото",
+		"nameTitle": "Редагувати ім'я",
+		"namePlaceholder": "Напишіть нове ім'я",
+		"changeButton": "Змінити",
+		"deleteUserButton": "ВИДАЛИТИ",
+		"logOutUserButton": "ВИЙТИ",
+		"backToMainButton": "НАЗАД"
 	}
 }

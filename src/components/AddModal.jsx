@@ -18,11 +18,11 @@ import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 
 const AddModal = () => {
-	const { tasks, setTasks, addModal, setAddModal, textTask, setTextTask, userId, setIsLoading, mainColor, setModal } = useAppContext()
+	const { tasks, setTasks, addModal, setAddModal, textTask, setTextTask, user, userId, setIsLoading, mainColor, setModal, language } = useAppContext()
 	const { t } = useTranslation()
 	const { colorMode } = useColorMode()
 	const bgInputColor = useColorModeValue('white', '#1C203B')
-	const personName = localStorage.getItem('name')
+	const personName = user.name
 
 	const addTask = (e) => {
 		setIsLoading(true)
@@ -63,22 +63,42 @@ const AddModal = () => {
 					>
 						{t('main.createTitle')}
 					</Box>
-					<Box
-						fontFamily='Montserrat, sans-serif'
-						fontWeight='500'
-						fontSize='11px'
-					>
-						{t('main.createSubTitle')}
+					{language === 'en' ? (
 						<Box
-							cursor='pointer'
-							display='inline-block'
-							fontWeight='700'
-							_hover={{ textDecoration: 'underline' }}
-							onClick={openProfile}
+							fontFamily='Montserrat, sans-serif'
+							fontWeight='500'
+							fontSize='11px'
 						>
-							{personName}
+							<Box
+								cursor='pointer'
+								display='inline-block'
+								fontWeight='700'
+								_hover={{ textDecoration: 'underline' }}
+								onClick={openProfile}
+							>
+								{personName}
+							</Box>
+							{t('main.createSubTitle')}
 						</Box>
-					</Box>
+					) : (
+						<Box
+							fontFamily='Montserrat, sans-serif'
+							fontWeight='500'
+							fontSize='11px'
+						>
+							{t('main.createSubTitle')}
+							<Box
+								cursor='pointer'
+								display='inline-block'
+								fontWeight='700'
+								_hover={{ textDecoration: 'underline' }}
+								onClick={openProfile}
+							>
+								{personName}
+							</Box>
+						</Box>
+					)}
+
 				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>

@@ -17,7 +17,7 @@ const AuthModal = () => {
 	const [noteBox, setNoteBox] = useState(false)
 
 	return (
-		<Drawer isOpen={Modal !== 'close' ? true : false} size='full' placement='left'>
+		<Drawer isOpen={Modal !== 'close' ? true : false} size='full' placement='left' blockScrollOnMount={false}>
 			<DrawerOverlay />
 			<DrawerContent
 				alignItems='center'

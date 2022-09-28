@@ -28,9 +28,9 @@ const Login = ({ noteBox, setNoteBox }) => {
 		if (!!users) {
 			users.forEach(user => {
 				if (person === user.login && pass === user.password) {
-					localStorage.setItem('login', user.login)
+					const userData = { login: user.login, id: user.id, name: user.name, photo: user.photo }
+					localStorage.setItem('user', JSON.stringify(userData))
 					localStorage.setItem('id', user.id)
-					localStorage.setItem('name', user.name)
 					setUserId(user.id)
 					setPerson('')
 					setPass('')

@@ -1,36 +1,33 @@
 import React from 'react'
 import {
 	Box,
+	Center,
 	DrawerBody,
-	Editable,
-	EditableInput,
-	EditablePreview,
 	Flex,
 	Image,
+	Input,
 	useColorModeValue,
 } from '@chakra-ui/react'
+import logo from '../imgs/logo.svg'
 import { useState } from 'react'
 import { useAppContext } from './app-context'
-import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 import OutlineButton from './ui/OutlineButton'
-import { deleteUser } from './services'
+import LinkButton from './ui/LinkButton'
+import { deleteUser, editData } from './services'
 
 const Profile = () => {
-	const { tasks, users, setUsers, userId, mainColor, setModal, setIsLoading } = useAppContext()
+	const { tasks, setUsers, setUser, user, userId, mainColor, setModal, setIsLoading } = useAppContext()
 	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
-	const [person, setPerson] = useState(``)
-	const [pass, setPass] = useState('')
-
-	const name = localStorage.getItem('name')
+	const [error, setError] = useState(false)
+	const [editedImg, setEditedImg] = useState('')
+	const [editedName, setEditedName] = useState('')
 
 	const cleanUpLocalStorage = () => {
-		localStorage.removeItem('login')
-		localStorage.removeItem('id')
-		localStorage.removeItem('name')
+		localStorage.removeItem('user')
 	}
 
 	const logOut = () => {
@@ -53,13 +50,38 @@ const Profile = () => {
 		setModal('close')
 	}
 
+	const changeData = (newData, keyData) => {
+		setIsLoading(true)
+		if (!!newData) {
+			const key = keyData
+			setUser(prevState => {
+				return { ...prevState, [key]: newData }
+			})
+			const editedUser = { ...user, [key]: newData }
+			localStorage.setItem('user', JSON.stringify(editedUser))
+			editData(userId, { [key]: newData })
+				.then(() => {
+					setIsLoading(false)
+					setError(false)
+				})
+		} else {
+			setError(true)
+			setIsLoading(false)
+		}
+	}
+
 	return (
 		<Box
-			w='480px'
+			maxW='560px'
 			alignItems='left'
-			my={['50px', '100px', '30px']}
 		>
 			<DrawerBody>
+				<Center
+					mt={['10px', '20px', '30px']}
+					mb={['5px', '10px', '15px']}
+				>
+					<Image src={logo} w='100%' />
+				</Center>
 				<Box
 					fontFamily='Montserrat, sans-serif'
 					fontWeight='700'
@@ -67,53 +89,138 @@ const Profile = () => {
 					color={textColor}
 					my="15px"
 				>
-					Profile
+					{t('profile.title')}
 				</Box>
-
-				<Box>
-					Photo
+				<Flex>
 					<Box
-						w='100px'
-						h='100px'
+						h='150px'
+						my='10px'
+						borderRadius='50%'
+						overflow='hidden'
+						flex='0 0 150px'
 					>
 						<Image
-							h='100px'
-							src='https://images7.memedroid.com/images/UPLOADED484/611bd18aecbfd.jpeg' />
+							objectFit='cover'
+							h='100%'
+							w='auto'
+							src={user.photo}
+							alt='Profile photo'
+						/>
 					</Box>
-				</Box>
+					<Flex
+						mx='20px'
+						flexDirection='column'
+						justifyContent='center'
+					>
+						<Box
+							color={mainColor}
+							fontFamily='Montserrat, sans-serif'
+							fontSize='30px'
+							fontWeight='700'
+						>
+							{user.name}
+						</Box>
+						<Box
+							color={textColor}
+							fontFamily='Montserrat, sans-serif'
+							fontSize='14px'
+							fontWeight='500'
+						>
+							{t('profile.subText')} {tasks.length}
+						</Box>
+					</Flex>
+				</Flex>
+				{error ? (
+					<Box
+						textAlign='center'
+						color='red'
+						my='10px'
+					>
+						{t('profile.error')}
+					</Box>
+				) : (
+					<Box display={'none'}></Box>
+				)}
 
 				<Box
 					my='20px'
 				>
-					Name
-					<Editable defaultValue={name}>
-						<EditablePreview />
-						<EditableInput />
-					</Editable>
+					<Box
+						my='10px'
+						color={textColor}
+						fontFamily='Montserrat, sans-serif'
+						fontSize='16px'
+						fontWeight='500'
+					>
+						{t('profile.photoTitle')}
+					</Box>
+					<Flex
+						gap='10px'
+					>
+						<Input
+							bgColor={bgInputColor}
+							placeholder={t('profile.photoPlaceholder')}
+							value={editedImg}
+							onChange={(e) => setEditedImg(e.target.value)}
+						/>
+						<LinkButton
+							onClick={() => changeData(editedImg, 'photo')}
+						>
+							{t('profile.changeButton')}
+						</LinkButton>
+					</Flex>
 				</Box>
-
+				<Box
+					my='20px'
+				>
+					<Box
+						my='10px'
+						color={textColor}
+						fontFamily='Montserrat, sans-serif'
+						fontSize='16px'
+						fontWeight='500'
+					>
+						{t('profile.nameTitle')}
+					</Box>
+					<Flex
+						gap='10px'
+					>
+						<Input
+							bgColor={bgInputColor}
+							placeholder={t('profile.namePlaceholder')}
+							value={editedName}
+							onChange={(e) => setEditedName(e.target.value)}
+						/>
+						<LinkButton
+							onClick={() => changeData(editedName, 'name')}
+						>
+							{t('profile.changeButton')}
+						</LinkButton>
+					</Flex>
+				</Box>
 				<Flex
+					my='30px'
 					justifyContent='space-around'
 					alignItems='center'
 				>
 					<OutlineButton
 						onClick={() => deleteProfile()}
 					>
-						DELETE
+						{t('profile.deleteUserButton')}
 					</OutlineButton>
 					<SolidButton
 						onClick={logOut}
 					>
-						{t('main.logOutButton')}
+						{t('profile.logOutUserButton')}
 					</SolidButton>
 					<OutlineButton
 						onClick={() => backToMain()}
 					>
-						BACK
+						{t('profile.backToMainButton')}
 					</OutlineButton>
 				</Flex>
 			</DrawerBody>
-		</Box >
+		</Box>
 	)
 }
 

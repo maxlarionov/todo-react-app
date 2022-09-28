@@ -24,6 +24,7 @@ const SignUp = ({ noteBox, setNoteBox }) => {
 	const [name, setName] = useState('')
 	const [login, setLogin] = useState('')
 	const [pass, setPass] = useState('')
+	const defaultUserPhoto = 'https://drive.google.com/file/d/1aMIieY5wKkSG-bhK6nxbHJLDfQe5aHYW/view?usp=sharing'
 
 	const signUp = (name, login, pass) => {
 		if (!!users) {
@@ -32,7 +33,7 @@ const SignUp = ({ noteBox, setNoteBox }) => {
 				setNoteBox({ text: t('signup.incorrectNote'), color: 'red' })
 			} else if (login.length >= 3 && pass.length >= 3) {
 				setIsLoading(true)
-				const newUser = { name: name, login: login, password: pass, todos: [] }
+				const newUser = { name: name, login: login, password: pass, photo: defaultUserPhoto, todos: [] }
 				postUser(newUser)
 					.then(data => {
 						setIsLoading(false)

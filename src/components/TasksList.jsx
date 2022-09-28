@@ -12,7 +12,8 @@ const TasksList = () => {
 
 	useEffect(() => {
 		setIsLoading(true)
-		if (!!localStorage.getItem('id')) {
+		const user = JSON.parse(localStorage.getItem('user'))
+		if (!!user) {
 			getTasks(userId)
 				.then(data => {
 					setIsLoading(false)

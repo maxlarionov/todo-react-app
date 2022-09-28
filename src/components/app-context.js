@@ -13,9 +13,12 @@ export const useAppState = () => {
    const [editTask, setEditTask] = useState('')
    const [Modal, setModal] = useState('close')
    const [users, setUsers] = useState([])
+   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
    const [userId, setUserId] = useState(localStorage.getItem('id'))
    const [isLoading, setIsLoading] = useState(false)
    const [language, setLanguage] = useLocalStorage('language', 'en')
+   const [profileImg, setProfileImg] = useState(localStorage.getItem('photo'))
+   // const [profileImg, setProfileImg] = useState('https://images7.memedroid.com/images/UPLOADED484/611bd18aecbfd.jpeg')
 
    const handleLanguageChange = () => {
       if (language === 'en') {
@@ -49,6 +52,8 @@ export const useAppState = () => {
       setModal,
       users,
       setUsers,
+      user,
+      setUser,
       userId,
       setUserId,
       isLoading,
@@ -56,7 +61,9 @@ export const useAppState = () => {
       language,
       setLanguage,
       handleLanguageChange,
-      mainColor
+      mainColor,
+      profileImg,
+      setProfileImg
    }
 }
 
@@ -76,6 +83,8 @@ export const AppProvider = ({ children }) => {
       setModal,
       users,
       setUsers,
+      user,
+      setUser,
       userId,
       setUserId,
       isLoading,
@@ -83,7 +92,9 @@ export const AppProvider = ({ children }) => {
       language,
       setLanguage,
       handleLanguageChange,
-      mainColor
+      mainColor,
+      profileImg,
+      setProfileImg
    } = useAppState()
 
    return (
@@ -103,6 +114,8 @@ export const AppProvider = ({ children }) => {
             setModal,
             users,
             setUsers,
+            user,
+            setUser,
             userId,
             setUserId,
             isLoading,
@@ -110,7 +123,9 @@ export const AppProvider = ({ children }) => {
             language,
             setLanguage,
             handleLanguageChange,
-            mainColor
+            mainColor,
+            profileImg,
+            setProfileImg
          }}
       >
          {children}
