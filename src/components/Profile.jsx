@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 import OutlineButton from './ui/OutlineButton'
 import LinkButton from './ui/LinkButton'
-import { deleteUser, editData } from './services'
+import { deleteUser, editData } from '../services'
 
 const Profile = () => {
 	const { tasks, setUsers, setUser, user, userId, mainColor, setModal, setIsLoading } = useAppContext()
@@ -28,6 +28,7 @@ const Profile = () => {
 
 	const cleanUpLocalStorage = () => {
 		localStorage.removeItem('user')
+		localStorage.removeItem('id')
 	}
 
 	const logOut = () => {

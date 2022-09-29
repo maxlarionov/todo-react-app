@@ -13,7 +13,7 @@ import {
 	useColorModeValue
 } from '@chakra-ui/react'
 import { useAppContext } from './app-context'
-import { editDataTask } from './services'
+import { editDataTask } from '../services'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 

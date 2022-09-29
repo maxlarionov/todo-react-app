@@ -17,7 +17,7 @@ import SolidButton from './ui/SolidButton'
 import LinkButton from './ui/LinkButton'
 
 const Login = ({ noteBox, setNoteBox }) => {
-	const { users, mainColor, setModal, setUserId } = useAppContext()
+	const { setAuth, users, setUser, mainColor, setModal, setUserId } = useAppContext()
 	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
@@ -31,6 +31,8 @@ const Login = ({ noteBox, setNoteBox }) => {
 					const userData = { login: user.login, id: user.id, name: user.name, photo: user.photo }
 					localStorage.setItem('user', JSON.stringify(userData))
 					localStorage.setItem('id', user.id)
+					setAuth(true)
+					setUser(userData)
 					setUserId(user.id)
 					setPerson('')
 					setPass('')

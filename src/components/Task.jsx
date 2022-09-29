@@ -6,7 +6,7 @@ import {
 	Box
 } from '@chakra-ui/react'
 import { useAppContext } from './app-context'
-import { editDataTask } from './services'
+import { editDataTask } from '../services'
 
 const Task = ({ task }) => {
 	const { tasks, setEditModal, setTasks, setEditTask, userId, setIsLoading, mainColor } = useAppContext()

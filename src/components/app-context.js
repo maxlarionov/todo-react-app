@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 import i18n from "./i18n"
-import { getUsers } from "./services"
+import { getUsers } from "../services"
 
 const AppContext = createContext()
 
 export const useAppState = () => {
+   const [auth, setAuth] = useState(false)
    const [tasks, setTasks] = useState([])
    const [addModal, setAddModal] = useState(false)
    const [textTask, setTextTask] = useState('')
@@ -18,7 +19,6 @@ export const useAppState = () => {
    const [isLoading, setIsLoading] = useState(false)
    const [language, setLanguage] = useLocalStorage('language', 'en')
    const [profileImg, setProfileImg] = useState(localStorage.getItem('photo'))
-   // const [profileImg, setProfileImg] = useState('https://images7.memedroid.com/images/UPLOADED484/611bd18aecbfd.jpeg')
 
    const handleLanguageChange = () => {
       if (language === 'en') {
@@ -38,6 +38,8 @@ export const useAppState = () => {
    const mainColor = '#4553CF'
 
    return {
+      auth,
+      setAuth,
       tasks,
       setTasks,
       addModal,
@@ -69,6 +71,8 @@ export const useAppState = () => {
 
 export const AppProvider = ({ children }) => {
    const {
+      auth,
+      setAuth,
       tasks,
       setTasks,
       addModal,
@@ -100,6 +104,8 @@ export const AppProvider = ({ children }) => {
    return (
       <AppContext.Provider
          value={{
+            auth,
+            setAuth,
             tasks,
             setTasks,
             addModal,
