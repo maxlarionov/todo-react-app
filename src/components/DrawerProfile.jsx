@@ -1,26 +1,18 @@
 import React from 'react'
-import {
-	Box,
-	Center,
-	DrawerBody,
-	Flex,
-	Image,
-	Input,
-	useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Center, DrawerBody, Flex, Image, useColorModeValue } from '@chakra-ui/react'
 import logo from '../imgs/logo.svg'
 import { useState } from 'react'
-import { useAppContext } from './app-context'
+import { useAppContext } from '../context/app-context'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 import OutlineButton from './ui/OutlineButton'
 import LinkButton from './ui/LinkButton'
 import { deleteUser, editData } from '../services'
+import MyInput from './ui/MyInput'
 
 const Profile = () => {
 	const { tasks, setUsers, setUser, user, userId, mainColor, setModal, setIsLoading } = useAppContext()
 	const textColor = useColorModeValue('black', mainColor)
-	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
 	const [error, setError] = useState(false)
 	const [editedImg, setEditedImg] = useState('')
@@ -158,8 +150,7 @@ const Profile = () => {
 					<Flex
 						gap='10px'
 					>
-						<Input
-							bgColor={bgInputColor}
+						<MyInput
 							placeholder={t('profile.photoPlaceholder')}
 							value={editedImg}
 							onChange={(e) => setEditedImg(e.target.value)}
@@ -186,8 +177,7 @@ const Profile = () => {
 					<Flex
 						gap='10px'
 					>
-						<Input
-							bgColor={bgInputColor}
+						<MyInput
 							placeholder={t('profile.namePlaceholder')}
 							value={editedName}
 							onChange={(e) => setEditedName(e.target.value)}

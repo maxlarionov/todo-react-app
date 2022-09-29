@@ -1,16 +1,9 @@
 import React from 'react'
-import {
-	Center,
-	Flex,
-	Image,
-	Box,
-	useColorMode,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { Center, Flex, Image, Box, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import logo from '../imgs/logo.svg'
 import themeWhite from '../imgs/theme-w.svg'
 import themeDark from '../imgs/theme-d.svg'
-import { useAppContext } from './app-context'
+import { useAppContext } from '../context/app-context'
 import { useTranslation } from 'react-i18next'
 import OutlineButton from './ui/OutlineButton'
 import SolidButton from './ui/SolidButton'
@@ -68,7 +61,6 @@ const Header = () => {
 						{user.name}
 					</Box>
 				</Flex>
-
 				<SolidButton
 					px={['15px', '25px', '35px']}
 					onClick={() => openAddModal()}

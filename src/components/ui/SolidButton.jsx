@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppContext } from '../app-context'
+import { useAppContext } from '../../context/app-context'
 import { Button } from '@chakra-ui/react'
 
 

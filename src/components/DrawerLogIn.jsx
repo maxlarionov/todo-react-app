@@ -1,23 +1,16 @@
 import React from 'react'
-import {
-	Box,
-	Center,
-	DrawerBody,
-	Flex,
-	Image,
-	Input,
-	useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Center, DrawerBody, Flex, Image, Input, useColorModeValue } from '@chakra-ui/react'
 import logo from '../imgs/logo.svg'
 import { useState } from 'react'
-import { useAppContext } from './app-context'
+import { useAppContext } from '../context/app-context'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 import LinkButton from './ui/LinkButton'
+import { getTasks } from '../services'
 
 const Login = ({ noteBox, setNoteBox }) => {
-	const { setAuth, users, setUser, mainColor, setModal, setUserId } = useAppContext()
+	const { setAuth, users, setUser, setUserId, setTasks, mainColor, setModal, setIsLoading } = useAppContext()
 	const textColor = useColorModeValue('black', mainColor)
 	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const { t } = useTranslation()
@@ -37,7 +30,13 @@ const Login = ({ noteBox, setNoteBox }) => {
 					setPerson('')
 					setPass('')
 					setNoteBox(false)
-					setModal('close')
+					getTasks(user.id)
+						.then(data => {
+							setModal('close')
+							setAuth(true)
+							setIsLoading(false)
+							return setTasks(data.todos)
+						})
 				} else setNoteBox({ text: t('login.errorNote'), color: 'red' })
 			})
 		}

@@ -1,27 +1,15 @@
 import React from 'react'
-import {
-	Box,
-	Input,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-	useColorMode,
-	useColorModeValue
-} from '@chakra-ui/react'
-import { useAppContext } from './app-context'
+import { Box, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useColorMode, } from '@chakra-ui/react'
+import { useAppContext } from '../context/app-context'
 import { editDataTask } from '../services'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
+import MyInput from './ui/MyInput'
 
 const AddModal = () => {
 	const { tasks, setTasks, addModal, setAddModal, textTask, setTextTask, user, userId, setIsLoading, mainColor, setModal, language } = useAppContext()
 	const { t } = useTranslation()
 	const { colorMode } = useColorMode()
-	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const personName = user.name
 
 	const addTask = (e) => {
@@ -98,13 +86,10 @@ const AddModal = () => {
 							</Box>
 						</Box>
 					)}
-
 				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
-					<Input
-						backgroundColor={bgInputColor}
-						focusBorderColor={mainColor}
+					<MyInput
 						value={textTask}
 						onChange={(e) => setTextTask(e.target.value)}
 						placeholder={t('main.createText')}

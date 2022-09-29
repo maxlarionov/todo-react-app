@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-	Box, useColorModeValue
-} from '@chakra-ui/react'
+import { Box, useColorModeValue } from '@chakra-ui/react'
 
 const Wrapper = ({ children }) => {
 	const backgroundColor = useColorModeValue('#FAFAFA', '#1C203B')

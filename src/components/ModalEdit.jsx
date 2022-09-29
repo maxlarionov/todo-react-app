@@ -1,31 +1,18 @@
 import React from 'react'
-import {
-	Box,
-	Button,
-	Input,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-	useColorMode,
-	useColorModeValue
-} from '@chakra-ui/react'
-import { useAppContext } from './app-context'
+import { Box, Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useColorMode } from '@chakra-ui/react'
+import { useAppContext } from '../context/app-context'
 import { editDataTask } from '../services'
 import { useTranslation } from 'react-i18next'
 import SolidButton from './ui/SolidButton'
 import delButton from '../imgs/delete-icon.svg'
 import hoverDelButton from '../imgs/delete-icon-hover.svg'
 import fullDelButton from '../imgs/delete-icon-full.svg'
+import MyInput from './ui/MyInput'
 
 const EditModal = () => {
 	const { tasks, setTasks, editModal, setEditModal, setTextTask, editTask, setEditTask, user, userId, setIsLoading, mainColor, setModal, language } = useAppContext()
 	const { t } = useTranslation()
 	const { colorMode } = useColorMode()
-	const bgInputColor = useColorModeValue('white', '#1C203B')
 	const personName = user.name
 
 	const edit = () => {
@@ -91,7 +78,9 @@ const EditModal = () => {
 						fontFamily='Montserrat, sans-serif'
 						fontWeight='700'
 						pb='0px'
-					>{t('main.editTitle')}</Box>
+					>
+						{t('main.editTitle')}
+					</Box>
 					{language === 'en' ? (
 						<Box
 							fontFamily='Montserrat, sans-serif'
@@ -130,10 +119,7 @@ const EditModal = () => {
 				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
-					<Input
-						color={mainColor}
-						backgroundColor={bgInputColor}
-						focusBorderColor={mainColor}
+					<MyInput
 						value={editTask.text}
 						onChange={onChangeEdit}
 						placeholder={t('main.createText')}

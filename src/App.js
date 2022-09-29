@@ -2,8 +2,8 @@ import React from 'react'
 import {
   ChakraProvider
 } from '@chakra-ui/react'
-import { AppProvider } from './components/app-context'
-import Modal from './components/Modal'
+import { AppProvider } from './context/app-context'
+import Drawer from './components/Drawer'
 import Wrapper from './components/Wrapper'
 import Loader from './components/Loader'
 import '@fontsource/montserrat/700.css'
@@ -16,7 +16,7 @@ function App() {
       <ChakraProvider>
         <Wrapper>
           <Main />
-          <Modal />
+          <Drawer />
           <Loader />
         </Wrapper>
       </ChakraProvider>

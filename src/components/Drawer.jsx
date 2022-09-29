@@ -1,15 +1,10 @@
 import React from 'react'
-import {
-	Drawer,
-	DrawerContent,
-	DrawerOverlay,
-	useColorModeValue,
-} from '@chakra-ui/react'
+import { Drawer, DrawerContent, DrawerOverlay, useColorModeValue } from '@chakra-ui/react'
 import { useState } from 'react'
-import { useAppContext } from './app-context'
-import Login from './LogIn'
-import SignUp from './SignUp'
-import Profile from './Profile'
+import { useAppContext } from '../context/app-context'
+import DrawerLogin from './DrawerLogIn'
+import DrawerSignUp from './DrawerSignUp'
+import DrawerProfile from './DrawerProfile'
 
 const AuthModal = () => {
 	const { Modal } = useAppContext()
@@ -24,12 +19,12 @@ const AuthModal = () => {
 				backgroundColor={backgroundColor}
 			>
 				{Modal === 'logIn' ? (
-					<Login noteBox={noteBox} setNoteBox={setNoteBox} />
+					<DrawerLogin noteBox={noteBox} setNoteBox={setNoteBox} />
 				) : (
 					Modal === 'signUp' ? (
-						<SignUp noteBox={noteBox} setNoteBox={setNoteBox} />
+						<DrawerSignUp noteBox={noteBox} setNoteBox={setNoteBox} />
 					) : (
-						<Profile />
+						<DrawerProfile />
 					)
 				)}
 			</DrawerContent>

@@ -1,11 +1,6 @@
 import React from 'react'
-import {
-	Flex,
-	Checkbox,
-	Text,
-	Box
-} from '@chakra-ui/react'
-import { useAppContext } from './app-context'
+import { Flex, Checkbox, Text, Box } from '@chakra-ui/react'
+import { useAppContext } from '../context/app-context'
 import { editDataTask } from '../services'
 
 const Task = ({ task }) => {

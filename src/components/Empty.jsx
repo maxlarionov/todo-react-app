@@ -1,14 +1,9 @@
 import React from 'react'
-import {
-	Box,
-	Center,
-	Img,
-	useColorMode
-} from '@chakra-ui/react'
+import { Box, Center, Img, useColorMode } from '@chakra-ui/react'
 import emptyW from '../imgs/empty-w.png'
 import emptyD from '../imgs/empty-d.png'
 import { useTranslation } from 'react-i18next'
-import { useAppContext } from './app-context'
+import { useAppContext } from '../context/app-context'
 
 const Empty = () => {
 	const { t } = useTranslation()

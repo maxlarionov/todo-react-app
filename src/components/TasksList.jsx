@@ -1,9 +1,7 @@
 import React from 'react'
-import {
-	Box
-} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Task from './Task'
-import { useAppContext } from './app-context'
+import { useAppContext } from '../context/app-context'
 import Empty from './Empty'
 
 const TasksList = () => {

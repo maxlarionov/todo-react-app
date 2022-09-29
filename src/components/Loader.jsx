@@ -1,11 +1,6 @@
 import React from 'react'
-import {
-	Box,
-	Center,
-	Spinner,
-	useColorModeValue
-} from '@chakra-ui/react'
-import { useAppContext } from './app-context'
+import { Box, Center, Spinner, useColorModeValue } from '@chakra-ui/react'
+import { useAppContext } from '../context/app-context'
 
 const Loader = () => {
 	const { isLoading } = useAppContext()
