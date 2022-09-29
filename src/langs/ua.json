@@ -9,28 +9,46 @@
 		"errorNote": "Неправильний логін або пароль",
 		"loginInput": "Логін",
 		"passInput": "Пароль",
-		"testingButton": "Тест",
-		"signUpButton": "Зареєструватися",
-		"logInButton": "Увійти"
+		"signUpButton": "Створити акаунт",
+		"logInButton": "УВІЙТИ",
+		"orButton": "або"
 	},
 	"signup": {
 		"title": "Реєстрація",
 		"defaultNote": "Створіть логін і пароль",
-		"errorNote": "Неправильний логін",
+		"incorrectNote": "Неправильний логін",
+		"errorNote": "Логін і пароль повинні бути більше 3 символів",
+		"nameInput": "Напишіть ім'я",
 		"loginInput": "Створіть логін",
 		"passInput": "Створіть пароль",
 		"backButton": "Назад",
-		"signUpButton": "Зареєструватися"
+		"signUpButton": "ЗАРЕЄСТРУВАТИСЯ",
+		"orButton": "або"
 	},
 	"main": {
-		"accButton": "Акаунт",
-		"addButton": "Додати задачу",
-		"createTitle": "Створіть задачу",
-		"createText": "Напишіть задачу",
+		"profileButton": "ПРОФІЛЬ",
+		"addButton": "ДОДАТИ ЗАДАЧУ",
+		"createTitle": "НОВА ЗАДАЧА",
+		"createSubTitle": "задачі ",
+		"createText": "Введіть текст",
 		"createButton": "Створити",
-		"editTitle": "Редагування задачі",
-		"editText": "*Закрийте для скасування редагування",
-		"deleteButton": "Видалити",
-		"editButton": "Редагувати"
+		"editTitle": "РУДАГУВАННЯ",
+		"editText": "Введіть текст",
+		"editButton": "Редагувати",
+		"emptyTitle": "Тут з’являться ваші задачі",
+		"emptyText": "Давайте додамо!"
+	},
+	"profile": {
+		"title": "Профіль",
+		"subText": "Блискавичні задачі:",
+		"error": "Пуста строка",
+		"photoTitle": "Редагувати фото",
+		"photoPlaceholder": "Вставте посилання на нове фото",
+		"nameTitle": "Редагувати ім'я",
+		"namePlaceholder": "Напишіть нове ім'я",
+		"changeButton": "Змінити",
+		"deleteUserButton": "ВИДАЛИТИ",
+		"logOutUserButton": "ВИЙТИ",
+		"backToMainButton": "НАЗАД"
 	}
 }

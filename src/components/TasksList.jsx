@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react'
-import {
-	Box
-} from '@chakra-ui/react'
+import React from 'react'
+import { Box } from '@chakra-ui/react'
 import Task from './Task'
-import { useAppContext } from './app-context'
-import { getTasks } from './services'
+import { useAppContext } from '../context/app-context'
+import Empty from './Empty'
 
 const TasksList = () => {
-	const { tasks, setTasks, userId, setIsLoading } = useAppContext()
-
-	useEffect(() => {
-		setIsLoading(true)
-		getTasks(userId)
-			.then(data => {
-				setIsLoading(false)
-				return setTasks(data.todos)
-			})
-	}, [setTasks, userId, setIsLoading])
+	const { tasks } = useAppContext()
 
 	return (
 		<Box>
-			{tasks.map(task =>
-				<Task key={task.id} task={task} />
+			{tasks[0] ? (
+				tasks.map(task =>
+					<Task key={task.id} task={task} />
+				)
+			) : (
+				<Empty />
 			)}
 		</Box>
 	)

@@ -1,64 +1,91 @@
 import React from 'react'
-import {
-	Center,
-	Button,
-	Flex,
-	Image
-} from '@chakra-ui/react'
-import logo from '../imgs/logo.png'
-import { useAppContext } from './app-context'
+import { Center, Flex, Image, Box, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import logo from '../imgs/logo.svg'
+import themeWhite from '../imgs/theme-w.svg'
+import themeDark from '../imgs/theme-d.svg'
+import { useAppContext } from '../context/app-context'
 import { useTranslation } from 'react-i18next'
+import OutlineButton from './ui/OutlineButton'
+import SolidButton from './ui/SolidButton'
 
 const Header = () => {
 	const { t } = useTranslation()
-
-	const { setAddModal, setAuthModal, handleLanguageChange, language } = useAppContext()
-
+	const { user, setAddModal, setModal, handleLanguageChange, language, mainColor } = useAppContext()
+	const { colorMode, toggleColorMode } = useColorMode()
+	const backgroundThemeColor = useColorModeValue('none', mainColor)
 	const openAddModal = () => {
 		setAddModal(true)
 	}
 
 	return (
 		<Flex
+			fontFamily=' Montserrat, sans-serif'
+			fontWeight='700'
 			flexDir='column'
 			justifyContent='center'
 			alignContent='center'
-			py={['0px', '0px', '5px']}
-			gap={['0px', '10px', '20px']}
+			py={['10px', '15px', '20px']}
+			gap={['10px', '10px', '20px']}
 			w='100%'
 		>
 			<Center
-				mt={['0px', '10px', '20px']}
+				mt={['10px', '20px', '30px']}
+				mb={['5px', '10px', '15px']}
 			>
-				<Image src={logo} w={250} />
+				<Image src={logo} w={492} />
 			</Center>
-
 			<Flex
 				justifyContent='space-between'
+				flexDirection={['column', 'row']}
+				gap={['10px', '0px']}
 			>
-				<Button
-					colorScheme='cyan'
-					variant='outline'
-					onClick={() => setAuthModal(true)}
+				<Flex
+					alignItems='center'
+					gap='1'
+					maxW='120px'
+					cursor='pointer'
+					_hover={{ opacity: 0.7 }}
+					onClick={() => setModal('profile')}
 				>
-					{t('main.accButton')}
-				</Button>
-				<Button
-					colorScheme='green'
+					<OutlineButton
+						bgImage={user.photo}
+						bgSize='cover'
+						bgPosition='center'
+						_hover={{ bgImage: [user.photo] }}
+						_active={{ bgImage: [user.photo] }}
+						onClick={(e) => e.preventDefault}
+					/>
+					<Box
+						color={mainColor}
+					>
+						{user.name}
+					</Box>
+				</Flex>
+				<SolidButton
+					px={['15px', '25px', '35px']}
 					onClick={() => openAddModal()}
 				>
 					{t('main.addButton')}
-				</Button>
-				<Button
-					colorScheme='cyan'
-					variant='outline'
-					onClick={handleLanguageChange}
+				</SolidButton>
+				<Box
+					position={['absolute', 'static']}
+					right='20px'
 				>
-					{language === 'en' ? t('EN') : t('UA')}
-				</Button>
+					<OutlineButton
+						bg={backgroundThemeColor}
+						mr='10px'
+						onClick={toggleColorMode}
+					>
+						<Image src={colorMode === 'light' ? themeWhite : themeDark} />
+					</OutlineButton>
+					<OutlineButton
+						onClick={handleLanguageChange}
+					>
+						{language === 'en' ? t('UA') : t('EN')}
+					</OutlineButton>
+				</Box>
 			</Flex>
-		</Flex>
-
+		</Flex >
 	)
 }
 

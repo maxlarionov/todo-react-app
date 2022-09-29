@@ -2,25 +2,21 @@ import React from 'react'
 import {
   ChakraProvider
 } from '@chakra-ui/react'
-import Header from './components/Header'
-import TasksList from './components/TasksList'
-import { AppProvider } from './components/app-context'
-import AddModal from './components/AddModal'
-import EditModal from './components/EditModal'
-import AuthModal from './components/AuthModal'
+import { AppProvider } from './context/app-context'
+import Drawer from './components/Drawer'
 import Wrapper from './components/Wrapper'
 import Loader from './components/Loader'
+import '@fontsource/montserrat/700.css'
+import '@fontsource/montserrat/600.css'
+import Main from './components/Main'
 
 function App() {
   return (
     <AppProvider>
       <ChakraProvider>
         <Wrapper>
-          <Header />
-          <TasksList />
-          <AddModal />
-          <EditModal />
-          <AuthModal />
+          <Main />
+          <Drawer />
           <Loader />
         </Wrapper>
       </ChakraProvider>

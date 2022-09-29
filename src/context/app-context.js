@@ -1,22 +1,24 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
-import i18n from "./i18n"
-import { getUsers } from "./services"
+import i18n from "../i18n/i18n"
+import { getUsers } from "../services"
 
 const AppContext = createContext()
 
 export const useAppState = () => {
+   const [auth, setAuth] = useState(false)
    const [tasks, setTasks] = useState([])
    const [addModal, setAddModal] = useState(false)
    const [textTask, setTextTask] = useState('')
    const [editModal, setEditModal] = useState(false)
    const [editTask, setEditTask] = useState('')
-   const [authModal, setAuthModal] = useState(true)
-   const [userId, setUserId] = useState(1)
+   const [Modal, setModal] = useState('close')
    const [users, setUsers] = useState([])
+   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+   const [userId, setUserId] = useState(localStorage.getItem('id'))
    const [isLoading, setIsLoading] = useState(false)
-
    const [language, setLanguage] = useLocalStorage('language', 'en')
+   const [profileImg, setProfileImg] = useState(localStorage.getItem('photo'))
 
    const handleLanguageChange = () => {
       if (language === 'en') {
@@ -33,7 +35,11 @@ export const useAppState = () => {
          .then(data => setUsers(data))
    }, [])
 
+   const mainColor = '#4553CF'
+
    return {
+      auth,
+      setAuth,
       tasks,
       setTasks,
       addModal,
@@ -44,22 +50,29 @@ export const useAppState = () => {
       setEditModal,
       editTask,
       setEditTask,
-      authModal,
-      setAuthModal,
-      userId,
-      setUserId,
+      Modal,
+      setModal,
       users,
       setUsers,
+      user,
+      setUser,
+      userId,
+      setUserId,
       isLoading,
       setIsLoading,
       language,
       setLanguage,
-      handleLanguageChange
+      handleLanguageChange,
+      mainColor,
+      profileImg,
+      setProfileImg
    }
 }
 
 export const AppProvider = ({ children }) => {
    const {
+      auth,
+      setAuth,
       tasks,
       setTasks,
       addModal,
@@ -70,22 +83,29 @@ export const AppProvider = ({ children }) => {
       setEditModal,
       editTask,
       setEditTask,
-      authModal,
-      setAuthModal,
-      userId,
-      setUserId,
+      Modal,
+      setModal,
       users,
       setUsers,
+      user,
+      setUser,
+      userId,
+      setUserId,
       isLoading,
       setIsLoading,
       language,
       setLanguage,
-      handleLanguageChange
+      handleLanguageChange,
+      mainColor,
+      profileImg,
+      setProfileImg
    } = useAppState()
 
    return (
       <AppContext.Provider
          value={{
+            auth,
+            setAuth,
             tasks,
             setTasks,
             addModal,
@@ -96,17 +116,22 @@ export const AppProvider = ({ children }) => {
             setEditModal,
             editTask,
             setEditTask,
-            authModal,
-            setAuthModal,
-            userId,
-            setUserId,
+            Modal,
+            setModal,
             users,
             setUsers,
+            user,
+            setUser,
+            userId,
+            setUserId,
             isLoading,
             setIsLoading,
             language,
             setLanguage,
-            handleLanguageChange
+            handleLanguageChange,
+            mainColor,
+            profileImg,
+            setProfileImg
          }}
       >
          {children}

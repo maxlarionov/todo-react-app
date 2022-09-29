@@ -1,18 +1,10 @@
 import React from 'react'
-import {
-	Flex,
-	Checkbox,
-	Text,
-	Box
-} from '@chakra-ui/react'
-import { useAppContext } from './app-context'
-import { editDataTask } from './services'
-
-
+import { Flex, Checkbox, Text, Box } from '@chakra-ui/react'
+import { useAppContext } from '../context/app-context'
+import { editDataTask } from '../services'
 
 const Task = ({ task }) => {
-
-	const { tasks, setEditModal, setTasks, setEditTask, userId, setIsLoading } = useAppContext()
+	const { tasks, setEditModal, setTasks, setEditTask, userId, setIsLoading, mainColor } = useAppContext()
 
 	const openEditModal = () => {
 		setEditModal(true)
@@ -37,13 +29,20 @@ const Task = ({ task }) => {
 
 	return (
 		<Flex
-			bgColor='yellow.300'
-			p={3}
+			py='20px'
+			px='30px'
 			my={[3, 4, 5]}
+			fontSize='12px'
+			fontFamily='Montserrat, sans-serif'
+			fontWeight='600'
+			color={mainColor}
+			border='1px solid'
+			borderColor='#4553CF'
 			borderRadius='10px'
 			gap='10px'
-			onClick={openEditModal}
 			cursor='pointer'
+			_hover={{ bg: 'rgba(69, 83, 207, 0.1)' }}
+			onClick={openEditModal}
 		>
 			<Box
 				display='flex'
@@ -52,7 +51,7 @@ const Task = ({ task }) => {
 			>
 				<Checkbox
 					colorScheme='green'
-					borderColor='#282828'
+					borderColor='#FFDA00'
 					defaultChecked={task.complete}
 					onChange={() => checkDone(task.id)}
 				/>

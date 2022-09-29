@@ -9,28 +9,46 @@
 		"errorNote": "Incorrect login or password",
 		"loginInput": "Login",
 		"passInput": "Password",
-		"testingButton": "Test",
-		"signUpButton": "Sign Up",
-		"logInButton": "Log In"
+		"signUpButton": "Sign up",
+		"logInButton": "LOG IN",
+		"orButton": "or"
 	},
 	"signup": {
 		"title": "Sign Up",
 		"defaultNote": "Create login and password",
-		"errorNote": "Incorrect login",
+		"incorrectNote": "Incorrect login",
+		"errorNote": "login and password must be more than 3 symbols",
+		"nameInput": "Write name",
 		"loginInput": "Create login",
 		"passInput": "Create password",
 		"backButton": "Back",
-		"signUpButton": "Sign Up"
+		"signUpButton": "SIGN UP",
+		"orButton": "or"
 	},
 	"main": {
-		"accButton": "Account",
-		"addButton": "Add Task",
-		"createTitle": "Create task",
-		"createText": "Write task",
+		"profileButton": "PROFILE",
+		"addButton": "ADD TASK",
+		"createTitle": "NEW TASK",
+		"createSubTitle": "'s task",
+		"createText": "Write text",
 		"createButton": "Create",
-		"editTitle": "Edit task",
-		"editText": "*Close to cancel editing",
-		"deleteButton": "Delete",
-		"editButton": "Edit"
+		"editTitle": "Edit text",
+		"editText": "Write text",
+		"editButton": "Edit",
+		"emptyTitle": "Your tasks will appear here",
+		"emptyText": "Let's add!"
+	},
+	"profile": {
+		"title": "Profile",
+		"subText": "Lightning tasks:",
+		"error": "Empty input",
+		"photoTitle": "Edit photo",
+		"photoPlaceholder": "Paste link to the new photo",
+		"nameTitle": "Edit name",
+		"namePlaceholder": "Write new name",
+		"changeButton": "Change",
+		"deleteUserButton": "DELETE",
+		"logOutUserButton": "LOG OUT",
+		"backToMainButton": "BACK"
 	}
 }
