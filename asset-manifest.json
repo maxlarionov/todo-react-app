@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-react-app/static/css/main.753f5d99.css",
-    "main.js": "/todo-react-app/static/js/main.bb763058.js",
+    "main.js": "/todo-react-app/static/js/main.20d428cb.js",
     "static/media/montserrat-all-700-normal.woff": "/todo-react-app/static/media/montserrat-all-700-normal.168d5b114e5a6d216802.woff",
     "static/media/montserrat-all-600-normal.woff": "/todo-react-app/static/media/montserrat-all-600-normal.3e143051a8039d6b6e99.woff",
     "static/media/empty-d.png": "/todo-react-app/static/media/empty-d.0810ce489f3b751e042b.png",
@@ -24,10 +24,10 @@
     "static/media/theme-w.svg": "/todo-react-app/static/media/theme-w.dd89cf849531e1a390f55b8a8d145986.svg",
     "index.html": "/todo-react-app/index.html",
     "main.753f5d99.css.map": "/todo-react-app/static/css/main.753f5d99.css.map",
-    "main.bb763058.js.map": "/todo-react-app/static/js/main.bb763058.js.map"
+    "main.20d428cb.js.map": "/todo-react-app/static/js/main.20d428cb.js.map"
   },
   "entrypoints": [
     "static/css/main.753f5d99.css",
-    "static/js/main.bb763058.js"
+    "static/js/main.20d428cb.js"
   ]
 }
