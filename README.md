@@ -24,5 +24,5 @@
 
 Code by <a href="https://github.com/maxlarionov">Max Larionov</a>
 
-Design by <a href="#">Alex Tkachenko</a>
+Design by <a href="https://www.behance.net/Assasinsas528c">Alex Tkachenko</a>
 
