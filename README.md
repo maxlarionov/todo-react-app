@@ -2,6 +2,10 @@
 
 ## ToDo React App
 
+![React](https://img.shields.io/badge/React-15.4.1-%2361DAFB)
+![Version](https://img.shields.io/badge/Version-1.0-%23FFDA00)
+![License](https://img.shields.io/badge/License-MIT-brightgreen)
+
 **Technical task:**
 + Database work (adding, storing, editing, deleting data)
 + Multilingual (English, Ukrainian)
@@ -26,3 +30,4 @@ Code by <a href="https://github.com/maxlarionov">Max Larionov</a>
 
 Design by <a href="https://www.behance.net/Assasinsas528c">Alex Tkachenko</a>
 
+**License - [Apache 2.0 license](https://github.com/maxlarionov/todo-react-app/blob/master/LICENSE.txt)**
