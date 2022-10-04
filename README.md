@@ -4,7 +4,7 @@
 
 ![React](https://img.shields.io/badge/React-15.4.1-%2361DAFB)
 ![Version](https://img.shields.io/badge/Version-1.0-%23FFDA00)
-![License](https://img.shields.io/badge/License-MIT-brightgreen)
+![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen)
 
 **Technical task:**
 + Database work (adding, storing, editing, deleting data)
