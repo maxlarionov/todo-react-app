@@ -199,17 +199,43 @@ const Profile = () => {
 					>
 						{t('profile.deleteUserButton')}
 					</OutlineButton>
-					<SolidButton
+					<OutlineButton
 						onClick={logOut}
 					>
 						{t('profile.logOutUserButton')}
-					</SolidButton>
-					<OutlineButton
+					</OutlineButton>
+					<SolidButton
 						onClick={() => backToMain()}
 					>
 						{t('profile.backToMainButton')}
-					</OutlineButton>
+					</SolidButton>
 				</Flex>
+				<Box
+					display={['block', 'block', 'flex']}
+					justifyContent='center'
+				>
+					<Box
+						fontWeight='600'
+						p='5px'
+						mr='5px'
+					>
+						Developers:
+					</Box>
+					<Box
+						fontSize='14px'
+						mx='5px'
+					>
+						Code
+						<LinkButton href='https://github.com/maxlarionov' isExternal>Max Larionov</LinkButton>
+					</Box>
+					<Box
+						fontSize='14px'
+						mx='5px'
+					>
+						Design
+						<LinkButton href='https://www.behance.net/Assasinsas528c' isExternal>Alex Tkachenko</LinkButton>
+					</Box>
+				</Box>
 			</DrawerBody>
 		</Box>
 	)
